@@ -1,0 +1,130 @@
+.header{
+    display: flex;
+    position: fixed;
+    align-items: center;
+    justify-content: space-between;
+    height:60px;
+    width: 100%;
+    background: transparent;
+    top:0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);;;
+}
+
+.back{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #202020;
+    padding: 0 20px;
+    height: 100%;
+    width: 100%;
+}
+
+.youtube{
+    width:120px;
+    height:50px;
+    margin-left: 20px;
+}
+
+.searchmenu{
+    display: flex;
+}
+
+.searchicon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:35px;
+    height:35px;
+    background-color: #181818;
+}
+
+.searchbutton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:35px;
+    width: 65px;
+    background-color: #313131;
+}
+
+.searchboxA{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    width: 600px;
+    height:35px;
+    margin: 0 12px 0 0;
+    border: 1px solid rgb(57, 57, 255);
+}
+
+.searchboxB{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    width: 600px;
+    height:35px;
+    margin: 0 12px 0 0;
+}
+
+.search, textarea{
+    width: 500px;
+    height:33px;
+    border: 0;
+    border-radius: 0;
+    outline-style: none;
+    background:#181818;
+    color:rgba(255, 255, 255, 0.88);
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.sound{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 35px;
+    height: 35px;
+    background-color: #181818;
+    border-radius: 50%;
+}
+
+.make{
+    color:white;
+    width:50px;
+    height: 50px;
+}
+
+.profilemenu{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 200px;
+    margin-right: 25px;
+}
+
+.profile{
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    background-color: green;
+    text-align: center;
+    color:#ffffff;
+    line-height: 35px;
+}
+
+.sidemenu{
+    position: fixed;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    color:#ffffff;
+    width:264px;
+    height:100%;
+    background-color: #202020;
+    padding: 12px 0;
+}
+
+.sidemenu:hover{
+    overflow-y: scroll;
+}

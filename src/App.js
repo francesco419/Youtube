@@ -1,4 +1,5 @@
 import Home from "./Home"
+import Search from "./Search";
 import {
   BrowserRouter,
   Routes,
@@ -9,6 +10,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="/Search" element={<Search/>} />
         <Route path={`${process.env.PUBLIC_URL}/`} element={<Home/>} />
       </Routes>
     </BrowserRouter>
