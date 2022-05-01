@@ -20,6 +20,7 @@
     width: 100%;
     background: transparent;
     top:0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);;;
 }
 
 .back{
@@ -38,21 +39,52 @@
     margin-left: 20px;
 }
 
-.searchbox{
+.searchmenu{
+    display: flex;
+}
+
+.searchicon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:35px;
+    height:35px;
+    background-color: #181818;
+}
+
+.searchbutton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:35px;
+    width: 65px;
+    background-color: #313131;
+}
+
+.searchboxA{
     display: flex;
     align-items: center;
-    justify-content: center;
-    width: 550px;
+    justify-content: start;
+    width: 600px;
     height:35px;
-    border: 1px solid white;
+    margin: 0 12px 0 0;
+    border: 1px solid rgb(57, 57, 255);
+}
+
+.searchboxB{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    width: 600px;
+    height:35px;
+    margin: 0 12px 0 0;
 }
 
 .search, textarea{
     width: 500px;
-    height:25px;
+    height:33px;
     border: 0;
     border-radius: 0;
-    padding:1px;
     outline-style: none;
     background:#181818;
     color:rgba(255, 255, 255, 0.88);
@@ -60,8 +92,14 @@
     font-weight: 400;
 }
 
-.input:active .searchbox{
-    width:600px;
+.sound{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 35px;
+    height: 35px;
+    background-color: #181818;
+    border-radius: 50%;
 }
 
 .make{
@@ -70,10 +108,28 @@
     height: 50px;
 }
 
+.profilemenu{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 200px;
+    margin-right: 25px;
+}
+
+.profile{
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    background-color: green;
+    text-align: center;
+    color:#ffffff;
+    line-height: 35px;
+}
+
 .sidemenu{
     position: fixed;
     font-weight: 400;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 20px;
     color:#ffffff;
     width:264px;
@@ -84,13 +140,10 @@
 
 .sidemenu:hover{
     overflow-y: scroll;
-    overflow-x: hidden;
 }
 
-use{
-    width: 30px;
-    height: 30px;
-    color:white;
+.sidemenu1{
+    height: 100%;
 }
 
 .home{
@@ -105,13 +158,32 @@ use{
     display: flex;
     align-items: center;
     width: 100%;
-    padding: 0 24px;
 }
 
 .homeq{
     margin-right: 24px;
 }
 
-.sidemenu1{
-    padding-right: 24px;
+.part{
+    padding: 12px 0;
+}
+
+.part2{
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin: 12px 0 0 0;
+    padding: 12px 0 0 0;
+}
+
+.home:hover{
+    background-color: #ffffff4f;
+}
+
+.setting{
+    width: 100%;
+    padding:0 24px;
+}
+
+.set{
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 12px 0;
 }

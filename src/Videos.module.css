@@ -1,13 +1,9 @@
 .videobox{
     max-width: 320px;
     min-width: 240px;
-    width: 100%;
     background-color: #181818;
     color:white;
     margin: 0 20px 50px 20px;
-}
-
-.thumbnails{
 }
 
 .thumbnails img{
