@@ -3,21 +3,28 @@ import styles from "./Menu.module.css";
 import Sidemenu from './Sidemenu';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { ReactComponent as YoutubeB } from './YouTube-Logo.wine.svg';
-import { ReactComponent as YoutubeW } from './YouTube-White-Full-Color-Logo.wine.svg';
-import { ReactComponent as Make } from './make.svg';
-import { ReactComponent as SearchIcon } from './searchicon.svg';
-import { ReactComponent as Sound } from './sound.svg';
-import { ReactComponent as AppIcon } from './app.svg';
-import { ReactComponent as Event } from './event.svg';
+import { ReactComponent as YoutubeB } from './img/YouTube-Logo.wine.svg';
+import { ReactComponent as YoutubeW } from './img/YouTube-White-Full-Color-Logo.wine.svg';
+import { ReactComponent as Make } from './img/make.svg';
+import { ReactComponent as SearchIcon } from './img/searchicon.svg';
+import { ReactComponent as Sound } from './img/sound.svg';
+import { ReactComponent as AppIcon } from './img/app.svg';
+import { ReactComponent as Event } from './img/event.svg';
 
 function Menu({json}){
+
+    const Hide=()=>{
+
+    }
+
     return(
         <div>
             <div className={styles.header}>
                 <div className={styles.back}>
                     <div style={{display:'flex', alignItems:'center'}}>
-                        <FontAwesomeIcon icon={faBars} size="lg" style={{color:'white'}}/>
+                        <button onClick={Hide} className={styles.button}>
+                            <FontAwesomeIcon icon={faBars} size="lg" style={{color:'white'}}/>
+                        </button>
                         <YoutubeW className={styles.youtube}/>
                     </div>
                     <div className={styles.searchmenu}>

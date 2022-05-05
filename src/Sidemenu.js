@@ -1,24 +1,24 @@
-import { ReactComponent as HomeQ } from './home.svg';
-import { ReactComponent as SearchQ } from './searchY.svg';
-import { ReactComponent as ShortsQ } from './shorts.svg';
-import { ReactComponent as SubscQ } from './subscribe.svg';
-import { ReactComponent as OriginQ } from './originals.svg';
-import { ReactComponent as MusicQ } from './music.svg';
-import { ReactComponent as StoreQ } from './store.svg';
-import { ReactComponent as SaveQ } from './save.svg';
-import { ReactComponent as HistoryQ } from './history.svg';
-import { ReactComponent as MyvideoQ } from './myvideo.svg';
-import { ReactComponent as LastervideoQ } from './latervideo.svg';
-import { ReactComponent as LikeQ } from './like.svg';
-import { ReactComponent as MovieQ } from './movie.svg';
-import { ReactComponent as GameQ } from './game.svg';
-import { ReactComponent as LivestreamQ } from './livestream.svg';
-import { ReactComponent as EduQ } from './edu.svg';
-import { ReactComponent as SportsQ } from './sports.svg';
-import { ReactComponent as SettingQ } from './setting.svg';
-import { ReactComponent as SingoQ } from './singo.svg';
-import { ReactComponent as CustomersQ } from './customers.svg';
-import { ReactComponent as SuggestionQ } from './suggestion.svg';
+import { ReactComponent as HomeQ } from './img/home.svg';
+import { ReactComponent as SearchQ } from './img/searchY.svg';
+import { ReactComponent as ShortsQ } from './img/shorts.svg';
+import { ReactComponent as SubscQ } from './img/subscribe.svg';
+import { ReactComponent as OriginQ } from './img/originals.svg';
+import { ReactComponent as MusicQ } from './img/music.svg';
+import { ReactComponent as StoreQ } from './img/store.svg';
+import { ReactComponent as SaveQ } from './img/save.svg';
+import { ReactComponent as HistoryQ } from './img/history.svg';
+import { ReactComponent as MyvideoQ } from './img/myvideo.svg';
+import { ReactComponent as LastervideoQ } from './img/latervideo.svg';
+import { ReactComponent as LikeQ } from './img/like.svg';
+import { ReactComponent as MovieQ } from './img/movie.svg';
+import { ReactComponent as GameQ } from './img/game.svg';
+import { ReactComponent as LivestreamQ } from './img/livestream.svg';
+import { ReactComponent as EduQ } from './img/edu.svg';
+import { ReactComponent as SportsQ } from './img/sports.svg';
+import { ReactComponent as SettingQ } from './img/setting.svg';
+import { ReactComponent as SingoQ } from './img/singo.svg';
+import { ReactComponent as CustomersQ } from './img/customers.svg';
+import { ReactComponent as SuggestionQ } from './img/suggestion.svg';
 import styles from "./Sidemenu.module.css";
 import {Link} from "react-router-dom";
 
@@ -47,8 +47,10 @@ function Sidemenu({json}){
                 <div className={styles.home}>
                     <div className={styles.setting}>
                         <div className={styles.inner}>
-                            <ShortsQ className={styles.homeq} style={{width:'24px',height:'24px',color:'white'}}/>
-                            <span>Shorts</span>
+                            <Link className={styles.inner} to="/Shorts" state={json}>
+                                <ShortsQ className={styles.homeq} style={{width:'24px',height:'24px',color:'white'}}/>
+                                <span>Shorts</span>
+                            </Link>
                         </div>
                     </div>
                 </div>

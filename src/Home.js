@@ -1,4 +1,5 @@
 import {useState,useEffect} from 'react';
+import {Link} from "react-router-dom";
 import styles from "./Home.module.css";
 import Videos from './Videos';
 import Menu from './Menu';
@@ -24,6 +25,7 @@ useEffect(()=>{
         />
         <videosection className={styles.box}>
             {state.map((item)=>(
+              <Link to={`/ShowVideo/${item.id}`} state={item}>
                 <Videos
                 thmbnails_high={item.snippet.thumbnails.medium.url}
                 channelId={item.snippet.channelId}
@@ -36,6 +38,7 @@ useEffect(()=>{
                 description={item.snippet.description}
                 format="true"
                 />
+              </Link>
             ))}
         </videosection>
     </div>

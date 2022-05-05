@@ -1,10 +1,18 @@
 import styles from "./Videos.module.css";
 import Moment from 'react-moment';
 import 'moment/locale/ko';
-import { useEffect, useState } from "react";
+import { useEffect, useState,useRef } from "react";
 
 
 function Videos({thmbnails_high,channelId,title,channelTitle,publishedAt,id,viewCount,description,format,length}){
+
+    /* const ref = useRef(null);
+
+    const VideoID = document.getElementById("id");
+    VideoID.addEventListener("click",()=>{
+        window.
+    }) */
+
     const view=(count)=>{
         if(count>10000){
             if(count>100000){
@@ -20,17 +28,13 @@ function Videos({thmbnails_high,channelId,title,channelTitle,publishedAt,id,view
             }
         }
     }
+
     return(
         <div className={styles.videobox}>
             {format ? (
                 <div className={styles.video}>
                     <div className={styles.thumbnails}>
                         <img src={thmbnails_high}/>
-                        <div>
-                            <div className={styles.length}>
-                                AAA
-                            </div>
-                        </div>
                     </div>
                     <div className={styles.info}>
                         <img src='https://w7.pngwing.com/pngs/110/230/png-transparent-whatsapp-application-software-message-icon-whatsapp-logo-whats-app-logo-logo-grass-mobile-phones-thumbnail.png'/>

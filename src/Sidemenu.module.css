@@ -10,6 +10,10 @@
     margin: 0;
 }
 
+.home:hover{
+    background-color: #ffffff4f;
+}
+
 .inner{
     display: flex;
     align-items: center;
@@ -26,10 +30,6 @@
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     margin: 12px 0 0 0;
     padding: 12px 0 0 0;
-}
-
-.home:hover{
-    background-color: #ffffff4f;
 }
 
 .setting{
@@ -49,4 +49,8 @@
     height: 40px;
     margin: 0;
     color: #aaaaaa;
+}
+
+.homeq{
+    margin: 0 24px 0 0;
 }
