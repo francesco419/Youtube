@@ -12,7 +12,6 @@ function Home() {
     const getState=async()=>{
     const json = await(await fetch(`https://www.googleapis.com/youtube/v3/videos?chart=mostPopular&part=statistics,snippet&regionCode=KR&maxResults=${count}&key=${API_KEY}`)).json();
     setState(json.items);
-    console.log(json.items)
     }
 useEffect(()=>{
   getState();

@@ -1,4 +1,209 @@
 .box{
+    height:100%;
+    margin-top: 60px;
     background-color: #181818;
+    white-space: pre-line;
+}
+
+.container{
+    display: flex;
+    padding-top: 24px;
     color:white;
+}
+
+.video{
+    width:65%;
+}
+
+.thumbnail{
+    height:500px;
+}
+
+.thumbnail img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.videotitle{
+    border-bottom: 1px solid #aaaaaa8e;
+}
+
+.titleinfo{
+    line-height: 26px;
+    font-weight: 400;
+}
+
+.tag{
+    color:#3ea6ff;
+}
+
+.title{
+    display: flex;
+    font-size: 18px;
+}
+
+.viewinfo{
+    font-size: 14px;
+    line-height: 20px;
+    color:#aaaaaa;
+}
+
+.viewoption{
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 0 0 0;
+}
+
+.options{
+    display: flex;
+    align-items: center;
+}
+
+.options div{
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.channel{
+    display: flex;
+    margin:24px 0;
+    font-size: 14px;
+    border-bottom: 1px solid #aaaaaa8e;
+}
+
+.iconbox{
+    margin: 0 20px 0 0;
+}
+
+.icon{
+    width: 48px;
+    height: 48px;
+}
+
+.icon img{
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+}
+
+.subs{
+    font-size: 12px;
+    line-height: 20px;
+    color:#aaaaaa;
+}
+
+.subbutton{
+    width: 72px;
+    height:40px;
+    color:white;
+    background-color: #c00;
+    border: 0;
+    border-radius: 2px;
+    margin: 0 0 0 50px;
+    cursor: pointer;
+}
+
+.channeltitle{ 
+}
+
+.description{
+    padding:15px 0;
+}
+
+.commenttop{
+    display: flex;
+    margin:30px 0;
+}
+
+.commentcount{
+    margin:0 30px 0 0;
+}
+
+.commentsection{
+    display: flex;
+    font-weight: 400;
+    margin:0 0 30px 0;
+}
+
+.commentimg{
+    margin-right: 20px;
+}
+
+.commentimg img{
+    border-radius: 50%;
+}
+
+.commentinfo{
+    display: flex;
+    font-size: 13px;
+    font-weight: 500;
+    margin: 0 0 10px 0;
+}
+
+.commentdate{
+    margin-left: 5px;
+    font-size: 12px;
+    color:#aaaaaa;
+}
+
+.commentoption{
+    display: flex;
+    font-size: 13px;
+    color:#aaaaaa;
+}
+
+.commentoption div{
+    margin: 15px 20px 15px 0;
+}
+
+.commentreply{
+    color:#3ea6ff;
+    cursor: pointer;
+}
+
+.videolist{
+    margin: 0 0 0 24px;
+    padding: 24px 24px 0 0;
+}
+
+.relateV{
+    display: flex;
+    width: 400px;
+    margin: 10px 0;
+}
+
+.relatethumb{
+    width: 168px;
+    height: 94px;
+    margin: 0 10px 0 0;
+}
+
+.relatethumb img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.loading{
+    border: 3px solid white;
+    border-radius: 50%;
+}
+
+.relateinfo{
+    width: 50%;
+    font-size: 12px;
+    color:#aaaaaa;
+    line-height: 18px;
+}
+
+.relatetitle{
+    font-size: 14px;
+    color: white;
+    line-height: 20px;
+    margin: 0 0 5px 0;
+}
+
+.tired{
+    display: flex;
 }
