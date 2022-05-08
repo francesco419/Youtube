@@ -2,6 +2,7 @@ import Home from "./Home"
 import Search from "./Search";
 import ShowVideo from "./ShowVideo";
 import Shorts from "./Shorts";
+import Channel from "./Channel";
 import {
   BrowserRouter,
   Routes,
@@ -13,6 +14,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/ShowVideo/:id" element={<ShowVideo/>} />
+        <Route path="/Channel/:id" element={<Channel/>} />
         <Route path="/Shorts" element={<Shorts/>} />
         <Route path="/Search" element={<Search/>} />
         <Route path={`${process.env.PUBLIC_URL}/`} element={<Home/>} />

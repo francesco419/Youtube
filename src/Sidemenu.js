@@ -141,7 +141,7 @@ function Sidemenu({json}){
                 <div className={styles.nohover}>
                     <div className={styles.setting}>
                         <div className={styles.inner}>
-                            <span>구독</span>
+                            <span style={{color: '#aaaaaa'}}>구독</span>
                         </div>
                     </div>
                 </div>
@@ -158,7 +158,7 @@ function Sidemenu({json}){
                 <div className={styles.nohover}>
                     <div className={styles.setting}>
                         <div className={styles.inner}>
-                            <span>YOUTUBE 더보기</span>
+                            <span style={{color: '#aaaaaa'}}>YOUTUBE 더보기</span>
                         </div>
                     </div>
                 </div>

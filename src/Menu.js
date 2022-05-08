@@ -12,19 +12,12 @@ import { ReactComponent as AppIcon } from './img/app.svg';
 import { ReactComponent as Event } from './img/event.svg';
 
 function Menu({json}){
-
-    const Hide=()=>{
-
-    }
-
     return(
         <div>
             <div className={styles.header}>
                 <div className={styles.back}>
                     <div style={{display:'flex', alignItems:'center'}}>
-                        <button onClick={Hide} className={styles.button}>
-                            <FontAwesomeIcon icon={faBars} size="lg" style={{color:'white'}}/>
-                        </button>
+                        <FontAwesomeIcon icon={faBars} size="lg" style={{color:'white'}}/>
                         <YoutubeW className={styles.youtube}/>
                     </div>
                     <div className={styles.searchmenu}>

@@ -189,8 +189,8 @@ function ShowVideo(){
                                             <img src={relate.snippet.thumbnails.high.url}/>
                                         </div>
                                         <div className={styles.relateinfo}>
-                                            <div className={styles.relatetitle}>
-                                                {(relate.snippet.title).length>40 ? `${(relatevideo[1].snippet.title).slice(0,35)}...` : (relate.snippet.title)}
+                                            <div className={styles.relatetitle} title={relate.snippet.title}>
+                                                {(relate.snippet.title).length>35 ? `${(relate.snippet.title).slice(0,32)}...` : (relate.snippet.title)}
                                             </div>
                                             <div>
                                                 {relate.snippet.channelTitle}

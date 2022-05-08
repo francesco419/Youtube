@@ -1,28 +1,30 @@
 .box{
     height:100%;
     margin-top: 60px;
+    padding: 30px;
     background-color: #181818;
     white-space: pre-line;
 }
 
 .container{
     display: flex;
-    padding-top: 24px;
     color:white;
+    max-width: 1500px;
+    margin: 0 auto;
 }
 
 .video{
-    width:65%;
+    width:1400px;
 }
 
 .thumbnail{
-    height:500px;
+    height:600px;
 }
 
 .thumbnail img{
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: fill;
 }
 
 .videotitle{
@@ -102,9 +104,6 @@
     border-radius: 2px;
     margin: 0 0 0 50px;
     cursor: pointer;
-}
-
-.channeltitle{ 
 }
 
 .description{

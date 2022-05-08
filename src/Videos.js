@@ -1,17 +1,10 @@
 import styles from "./Videos.module.css";
 import Moment from 'react-moment';
 import 'moment/locale/ko';
-import { useEffect, useState,useRef } from "react";
+import {Link} from "react-router-dom";
 
 
 function Videos({thmbnails_high,channelId,title,channelTitle,publishedAt,id,viewCount,description,format,length}){
-
-    /* const ref = useRef(null);
-
-    const VideoID = document.getElementById("id");
-    VideoID.addEventListener("click",()=>{
-        window.
-    }) */
 
     const view=(count)=>{
         if(count>10000){
@@ -34,17 +27,17 @@ function Videos({thmbnails_high,channelId,title,channelTitle,publishedAt,id,view
             {format ? (
                 <div className={styles.video}>
                     <div className={styles.thumbnails}>
-                        <img src={thmbnails_high}/>
+                        <img src={thmbnails_high} alt=""/>
                     </div>
                     <div className={styles.info}>
-                        <img src='https://w7.pngwing.com/pngs/110/230/png-transparent-whatsapp-application-software-message-icon-whatsapp-logo-whats-app-logo-logo-grass-mobile-phones-thumbnail.png'/>
+                        <img src='https://w7.pngwing.com/pngs/110/230/png-transparent-whatsapp-application-software-message-icon-whatsapp-logo-whats-app-logo-logo-grass-mobile-phones-thumbnail.png' alt=""/>
                         <div className={styles.title}>
                             <div className={styles.name} title={title}>
                                 {title.length>50 ? `${(title).slice(0,47)}...` : title}
                                 </div>
-                            <a className={styles.channel}>
+                            <Link Link to={`/Channel/${channelId}`} className={styles.channel}>
                                 {channelTitle}
-                                </a>
+                                </Link>
                             <div className={styles.view}>
                                 {view(viewCount)} · <Moment fromNow>{publishedAt}</Moment>
                             </div>
@@ -57,7 +50,7 @@ function Videos({thmbnails_high,channelId,title,channelTitle,publishedAt,id,view
             ):(
                 <div className={styles.false}>
                     <div className={styles.thumbnails}>
-                        <img src={thmbnails_high}/>
+                        <img src={thmbnails_high} alt=""/>
                     </div>
                     <div className={styles.infof}>
                         <div className={styles.titlef}>
@@ -65,9 +58,9 @@ function Videos({thmbnails_high,channelId,title,channelTitle,publishedAt,id,view
                                 {title.length>50 ? `${(title).slice(0,47)}...` : title}
                                 </div>
                             <div className={styles.viewf}>
-                                <a className={styles.channelf}>
+                                <Link Link to={`/Channel/${channelId}`} className={styles.channelf}>
                                     {channelTitle}
-                                </a>
+                                </Link>
                                  · {view(viewCount)} · <Moment fromNow>{publishedAt}</Moment>
                             </div>
                             <div className={styles.view}>
