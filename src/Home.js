@@ -22,7 +22,7 @@ useEffect(()=>{
         <Menu
         json={state}
         />
-        <videosection className={styles.box}>
+        <div className={styles.box}>
             {state.map((item)=>(
               <Link to={`/ShowVideo/${item.id}`} state={item}>
                 <Videos
@@ -39,7 +39,7 @@ useEffect(()=>{
                 />
               </Link>
             ))}
-        </videosection>
+        </div>
     </div>
   );
 }

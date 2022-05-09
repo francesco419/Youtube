@@ -35,7 +35,7 @@ function Videos({thmbnails_high,channelId,title,channelTitle,publishedAt,id,view
                             <div className={styles.name} title={title}>
                                 {title.length>50 ? `${(title).slice(0,47)}...` : title}
                                 </div>
-                            <Link Link to={`/Channel/${channelId}`} className={styles.channel}>
+                            <Link to={`/Channel/${channelId}`} className={styles.channel}>
                                 {channelTitle}
                                 </Link>
                             <div className={styles.view}>
@@ -58,7 +58,7 @@ function Videos({thmbnails_high,channelId,title,channelTitle,publishedAt,id,view
                                 {title.length>50 ? `${(title).slice(0,47)}...` : title}
                                 </div>
                             <div className={styles.viewf}>
-                                <Link Link to={`/Channel/${channelId}`} className={styles.channelf}>
+                                <Link to={`/Channel/${channelId}`} className={styles.channelf}>
                                     {channelTitle}
                                 </Link>
                                  · {view(viewCount)} · <Moment fromNow>{publishedAt}</Moment>

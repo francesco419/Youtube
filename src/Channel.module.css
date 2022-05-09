@@ -1,4 +1,107 @@
 .page{
-    height: 100vh;
+    height: 100%;
+}
+
+.box{
+    height:100%;
+    margin: 60px 0 0 263px;
     background-color: #181818;
+    white-space: pre-line;
+    color: white;
+}
+
+.banner{
+    height: 350px;
+    width: 100%;
+}
+
+.banner img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.name{
+    display: flex;
+    max-width: 1284px;
+    margin: 10px auto;
+}
+
+.logo{
+    width: 80px;
+    height: 80px;
+    margin: 0 24px 0 0;
+}
+
+.logo img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.channel{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.title{
+    font-size: 30px;
+}
+
+.subs{
+    font-size: 14px;
+    color:#aaaaaa;
+}
+
+.subbutton{
+    width: 72px;
+    height:40px;
+    color:white;
+    background-color: #c00;
+    border: 0;
+    border-radius: 2px;
+    margin: 0 0 0 50px;
+    cursor: pointer;
+}
+
+.tab{
+    display: flex;
+    list-style-type: none;
+    height: 47px;
+    max-width: 1284px;
+    margin: 0 auto;
+    padding:0;
+}
+
+.tab li{
+    display: flex;
+    align-items: center;
+    height: 47px;
+    padding: 0 32px;
+    color:#aaaaaa;
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+.tab li:hover{
+    color:#eeeeee
+}
+
+.tabpage{
+    background-color: #0f0f0f;
+    padding: 24px 0;
+}
+
+.container{
+    height: 100%;
+    color:white;
+    max-width: 1284px;
+    margin: 0 auto;
+}
+
+.height{
+    height:100%;
 }

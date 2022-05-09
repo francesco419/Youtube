@@ -1,0 +1,45 @@
+.box{
+    width: 100%;
+    height:100%;
+    margin: 0 10px 0 0;
+    text-decoration: none;
+    color:white;
+}
+
+.thumb{
+    width:210px;
+    height:118px;
+}
+
+.thumb img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.info{
+    font-size: 14px;
+    padding: 5px 0;
+}
+
+.title{
+    margin: 0 0 10px 0;
+}
+
+.grey{
+    color:#aaaaaa;
+    font-size: 12px;
+}
+
+.grey div{
+    margin: 3px 0 0 0;
+}
+
+.channel{
+    text-decoration: none;
+    color:#aaaaaa;
+}
+
+.channel:hover{
+    color:white;
+}

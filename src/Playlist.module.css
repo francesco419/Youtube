@@ -1,0 +1,15 @@
+.playlist{
+    width: 1284px;
+    height:300px;
+    border-top: 1px solid #272727;
+}
+
+.title{
+    display: flex;
+    padding: 24px 0;
+}
+
+.videos{
+    display: flex;
+    overflow: hidden;
+}

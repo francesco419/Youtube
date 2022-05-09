@@ -39,13 +39,14 @@
     font-size: 16px;
     font-weight: 500;
     color:#ffffff;
+    
 }
 
 .channel,
 .view{
     font-size: 14px;
     font-weight: 400;
-    color:#aaaaaa
+    color:#aaaaaa;
 }
 
 .channel:hover{
