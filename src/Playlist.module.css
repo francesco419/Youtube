@@ -9,6 +9,21 @@
     padding: 24px 0;
 }
 
+.title span{
+    cursor: pointer;
+}
+
+.playtitle{
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.playall{
+    margin:0 0 0 20px;
+    font-size: 14px;
+    color:#aaaaaa;
+}
+
 .videos{
     display: flex;
     overflow: hidden;

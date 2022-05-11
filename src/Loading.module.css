@@ -1,0 +1,27 @@
+.loading{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70px;
+    width: 100%;
+    margin: 20px 0;
+}
+
+
+.animate{
+    width: 50px;
+    height: 50px;
+    border: 5px dashed White;
+    border-radius: 50%;
+    animation: circleload 1.5s infinite;
+    animation-timing-function: ease;
+}
+
+@keyframes circleload {
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}

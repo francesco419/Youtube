@@ -3,6 +3,7 @@ import Menu from "./Menu";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ChannelHome from "./ChannelHome";
+import ChannelVideos from "./ChannelVideos";
 
 const API_KEY=process.env.REACT_APP_YOUTUBE_API_KEY;
 
@@ -19,6 +20,7 @@ function Channel(){
             setLoad(true);
         }
     }
+    console.log(channelinfo)
 
     useEffect(()=>{
         getItem();
@@ -49,7 +51,9 @@ function Channel(){
                 <ChannelHome id={channelinfo.brandingSettings.channel.unsubscribedTrailer} channel={ID.id} />
             </div>
         }else if(props === 1) {
-            return <div>Tab 2 내용입니다.</div>
+            return <div>
+                <ChannelVideos id={ID.id}/>
+            </div>
         }else if(props === 2){
             return <div>Tab 3 내용입니다.</div>
         }else if(props === 3){

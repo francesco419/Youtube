@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 import Moment from 'react-moment';
 import 'moment/locale/ko';
 
-function PlaylistVideo({thumbnail,title,channel,publish,channelID,videoID}){
+function PlaylistVideo({thumbnail,title,channel,publish,channelID,videoID,type}){
     const long=(text,size)=>{
         return (text.length>size ? text.slice(0,size-3)+"..." : text);
     }
@@ -15,7 +15,9 @@ function PlaylistVideo({thumbnail,title,channel,publish,channelID,videoID}){
             <div className={styles.info}>
                 <div className={styles.title}>{long(title,40)}</div>
                 <div className={styles.grey}>
+                    {type ? (
                     <Link to={`/Channel/${channelID}`} className={styles.channel}>{channel}</Link>
+                    ): null }
                     <div>
                         <Moment fromNow>{publish}</Moment>
                     </div>

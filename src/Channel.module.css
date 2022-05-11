@@ -23,7 +23,7 @@
 
 .name{
     display: flex;
-    max-width: 1284px;
+    max-width: 1300px;
     margin: 10px auto;
 }
 
@@ -98,7 +98,7 @@
 .container{
     height: 100%;
     color:white;
-    max-width: 1284px;
+    max-width: 1300px;
     margin: 0 auto;
 }
 

@@ -5,6 +5,7 @@ import styles from "./ShowVideo.module.css";
 import Header from "./Header";
 import Moment from 'react-moment';
 import 'moment/locale/ko';
+import Loading from "./Loading";
 
 const API_KEY=process.env.REACT_APP_YOUTUBE_API_KEY;
 
@@ -16,23 +17,21 @@ function ShowVideo(){
     const [item,setItem]=useState([]);
     const [comment,setComment]=useState([]);
     const [relatevideo,setRelateVideo]=useState([]);
+    const [load,setLoad]= useState(false);
     const getItem=async()=>{
         const jfile = await(await fetch(`https://www.googleapis.com/youtube/v3/channels?id=${json.snippet.channelId}&part=statistics&key=${API_KEY}`)).json();
         const jconmment = await(await fetch(`https://www.googleapis.com/youtube/v3/commentThreads?videoId=${vidId.id}&part=snippet&key=${API_KEY}`)).json();
         setItem(jfile.items[0].statistics.subscriberCount);
         setComment(jconmment.items);
-    }
-    const getRelate = async()=>{
         if(vidId){
             const jrelate = await(await fetch(`https://www.googleapis.com/youtube/v3/search?relatedToVideoId=${vidId.id}&type=video&maxResults=50&part=snippet&key=${API_KEY}`)).json();
             setRelateVideo(jrelate.items);
             setShow(true);
         }
+        setLoad(true);
     }
-
     useEffect(()=>{
         getItem();
-        setTimeout(getRelate,1000);
     },[])
 
     const view=(count)=>{
@@ -76,6 +75,7 @@ function ShowVideo(){
     return(
         <div>
             <Header/>
+            {load ? (
             <div className={styles.box}>
                 <div className={styles.container}>
                     <div className={styles.video}>
@@ -211,7 +211,9 @@ function ShowVideo(){
                         )
                     }
                 </div>
-            </div>
+            </div>):(
+                <Loading sec={2000}/>
+            )}
         </div>
     )
 }
