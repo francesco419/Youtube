@@ -13,8 +13,8 @@ function ChannelVideos({id}){
     const axi = async()=>{
         const json = await axios.get(`https://www.googleapis.com/youtube/v3/search?channelId=${id}&part=snippet&maxResults=50&key=${API_KEY}`);
         if(json){
-            setVideos(json)
-            setLoad(true)
+            setVideos(json);
+            setLoad(true);
         }
     } 
 
@@ -23,6 +23,9 @@ function ChannelVideos({id}){
     },[])
     return(
         <div className={styles.container}>
+            <div className={styles.name}>
+                업로드한 동영상
+            </div>
             {load ? (
                 <div className={styles.box}>
                     {videos.data.items.map((play)=>(

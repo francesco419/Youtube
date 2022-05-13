@@ -60,7 +60,7 @@ TabContent컴포넌트를 통해 각 메뉴마다 지정되어있는 tab State�
 
 Channel -> ChannelHome -> Playlist -> PlaylistVideo 순서로 메뉴 탭중 '홈'카테고리의 페이지를 제작하였다.
 
-Channel.js에서 채널ID를 <Link/>를 컴포넌트 매개변수로 받아와 이를 통해 API를 호출. 채널의 Tralier Video에 대한 ID를 받아 다시 Video API를 사용해 하나의 동영상이 Channel페이지에서 Trailer로서 보여지도록 했다.
+Channel.js에서 채널ID를 Link 컴포넌트 매개변수로 받아와 이를 통해 API를 호출. 채널의 Tralier Video에 대한 ID를 받아 다시 Video API를 사용해 하나의 동영상이 Channel페이지에서 Trailer로서 보여지도록 했다.
 
 채널마다 짧게는 5개 길게는 10개이상의 플레이리스트와 각 플레이리스트의 동영상들이 보여지는 구조를 가지고있어, 각 플레이리스트를 만들어줄 Playlist.js 컴포넌트를 제작하였다.
 
@@ -85,3 +85,23 @@ API = search / channelID 를 통해 채널에 해당하는 모든 영상 로드.
 
 =오류 및 개선점=
 플레이리스트 및 ShowVideos페이지에서 나열된 동영상을 클릭시 state로 전달하는 매개변수가 달라지게 되어 API로드에서 오류를 발생. ShowVideos 페이지의 로드실패 및 오류 발생. 매개변수의 데이터에 따라 유연한 코드처리 필요.
+
+- 3.3 재생목록 카테고리
+
+ChannelPlaylist 컴포넌트 제작.
+
+비교적 간단한 작업이라 각 플레이리스트를 보여주는 컨포넌트를 따로제작하지 않고, 페이지내부에 포함제작.
+
+API에서 각 플레이리스트에 존재하는 영상 수에 대한 데이터가 없음.
+
+썸네일 이미지에 (영상 수를 게시하려던)오버레이 및 마우스 hover오버레이 제작.
+
+커뮤니티 및 내러 카테고리는 API로 받을 수 없기에 제작할 수 없음.
+
+\*정보 탭 제작완료.
+
+===4===
+
+fetch를 통한 API호출을 axios를 사용하여 대채하는 작업중.
+
+react render cycle.

@@ -4,6 +4,9 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ChannelHome from "./ChannelHome";
 import ChannelVideos from "./ChannelVideos";
+import ChannelPlaylist from "./ChannelPlaylist";
+import { ReactComponent as SingoQ } from './img/singo.svg';
+import Loading from "./Loading";
 
 const API_KEY=process.env.REACT_APP_YOUTUBE_API_KEY;
 
@@ -20,7 +23,6 @@ function Channel(){
             setLoad(true);
         }
     }
-    console.log(channelinfo)
 
     useEffect(()=>{
         getItem();
@@ -55,13 +57,39 @@ function Channel(){
                 <ChannelVideos id={ID.id}/>
             </div>
         }else if(props === 2){
-            return <div>Tab 3 내용입니다.</div>
+            return <div>
+                <ChannelPlaylist channel={ID.id}/>
+            </div>
         }else if(props === 3){
-            return <div>Tab 3 내용입니다.</div>
+            return <div>커뮤니티 제작 불가</div>
         }else if(props === 4){
-            return <div>Tab 3 내용입니다.</div>
+            return <div>채널 제작 불가</div>
         }else if(props === 5){
-            return <div>Tab 3 내용입니다.</div>
+            return <div>
+                <div className={styles.infomation}>
+                    <div className={styles.descript}>
+                        <div>
+                            <p>설명</p>
+                            <p>{channelinfo.snippet.description}</p>
+                        </div>
+                        <div>
+                            <p>세부정보</p>
+                            <p>
+                                <span>위치 : </span>
+                                <span>{channelinfo.snippet.country}</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div className={styles.stat}>
+                        <p>통계</p>
+                        <p>가입일: {(channelinfo.snippet.publishedAt).slice(0,10)}</p>
+                        <p>조회수 {channelinfo.statistics.viewCount}</p>
+                        <p>
+                            <SingoQ/>
+                        </p>
+                    </div>
+                </div>
+            </div>
         }
       }
     
@@ -110,7 +138,7 @@ function Channel(){
                         </div>
                     </div>
                 ):(
-                    <div>loading</div>
+                    <Loading sec={1500}/>
                 ) }
             </div>
         </div>

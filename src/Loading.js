@@ -3,11 +3,13 @@ import styles from "./Loading.module.css";
 
 function Loading({sec}){
     const [time,setTime]=useState(false);
-    setTimeout(() => {
-        setTime(true)
-    },sec);
+    if(sec){
+        setTimeout(() => {
+            setTime(true)
+        },sec);
+    }
     return(
-        <div>
+        <div className={styles.container}>
             {time ? (
                 <div></div>
             ) : (

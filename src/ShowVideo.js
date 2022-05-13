@@ -6,6 +6,8 @@ import Header from "./Header";
 import Moment from 'react-moment';
 import 'moment/locale/ko';
 import Loading from "./Loading";
+import { Link } from "react-router-dom";
+import axios from "axios";
 
 const API_KEY=process.env.REACT_APP_YOUTUBE_API_KEY;
 
@@ -13,27 +15,65 @@ function ShowVideo(){
     const vidId = useParams();
     let location = useLocation();
     const json = location.state;
-    const [show,setShow]=useState(false);
-    const [item,setItem]=useState([]);
+    const [subs,setSubs]=useState([]);
     const [comment,setComment]=useState([]);
+    const [image,setImage]=useState();
     const [relatevideo,setRelateVideo]=useState([]);
-    const [load,setLoad]= useState(false);
-    const getItem=async()=>{
-        const jfile = await(await fetch(`https://www.googleapis.com/youtube/v3/channels?id=${json.snippet.channelId}&part=statistics&key=${API_KEY}`)).json();
-        const jconmment = await(await fetch(`https://www.googleapis.com/youtube/v3/commentThreads?videoId=${vidId.id}&part=snippet&key=${API_KEY}`)).json();
-        setItem(jfile.items[0].statistics.subscriberCount);
-        setComment(jconmment.items);
-        if(vidId){
-            const jrelate = await(await fetch(`https://www.googleapis.com/youtube/v3/search?relatedToVideoId=${vidId.id}&type=video&maxResults=50&part=snippet&key=${API_KEY}`)).json();
-            setRelateVideo(jrelate.items);
-            setShow(true);
+    const [loading,setLoading]= useState(true);
+    const [videoinfo,setVideo]= useState([]);
+    const [once,setOnce]=useState(true);
+    
+    const getVideoAPI=async()=>{
+        try{
+            setVideo(null);
+            const response = await axios.get(`https://www.googleapis.com/youtube/v3/videos?id=${vidId.id}&part=snippet&key=${API_KEY}`);
+            setVideo(response.data);
+            console.log(response);
+        } catch(e){
+            console.log("Video Load Error");
         }
-        setLoad(true);
+        getSubscriberAPI();
+    }
+    const getSubscriberAPI=async()=>{
+        try{
+            setSubs(null);
+            const response = await axios.get(`https://www.googleapis.com/youtube/v3/channels?id=${json}&part=statistics,snippet&key=${API_KEY}`);
+            setSubs(response.data);
+            console.log(response);
+        } catch(e){
+            console.log("Subscriber Load Error");
+        }
+        getCommentAPI();
+    }
+    const getCommentAPI=async()=>{
+        try{
+            setComment(null);
+            const response = await axios.get(`https://www.googleapis.com/youtube/v3/commentThreads?videoId=${vidId.id}&part=snippet&key=${API_KEY}`);
+            setComment(response.data);
+            console.log(response);
+        } catch(e){
+            console.log("Comment Load Error");
+        }
+        getRelateAPI();
+    }
+    const getRelateAPI=async()=>{
+        try{
+            setRelateVideo(null);
+            const response = await axios.get(`https://www.googleapis.com/youtube/v3/search?relatedToVideoId=${vidId.id}&type=video&maxResults=50&part=snippet&key=${API_KEY}`);
+            setRelateVideo(response.data);
+            console.log(response);
+        } catch(e){
+            console.log("RelateVideo Load Error");
+        }
+        setLoading(false);
+    }
+    const getItem=async()=>{
+        getVideoAPI();
     }
     useEffect(()=>{
         getItem();
     },[])
-
+    
     const view=(count)=>{
         const comma = ",";
         let out =count;
@@ -75,7 +115,9 @@ function ShowVideo(){
     return(
         <div>
             <Header/>
-            {load ? (
+            {loading ? (
+                <Loading/>
+            ):(
             <div className={styles.box}>
                 <div className={styles.container}>
                     <div className={styles.video}>
@@ -124,7 +166,7 @@ function ShowVideo(){
                             <div className={styles.channel}>
                                 <div className={styles.iconbox}>
                                     <div className={styles.icon}>
-                                        <img src='https://w7.pngwing.com/pngs/110/230/png-transparent-whatsapp-application-software-message-icon-whatsapp-logo-whats-app-logo-logo-grass-mobile-phones-thumbnail.png'/>
+                                        <img src={image}/>
                                     </div>
                                 </div>
                                 <div>
@@ -132,7 +174,7 @@ function ShowVideo(){
                                         {json.snippet.channelTitle}
                                     </div>
                                     <div className={styles.subs}>
-                                        구독자 {likes(item)}
+                                        구독자 {likes(subs)}
                                     </div>
                                     <div className={styles.description}>
                                         {json.snippet.description}
@@ -157,7 +199,7 @@ function ShowVideo(){
                                     </div>*/}
                                     {/* <input placeholder="댓글 추가..."> </input> */}
                                 </div>
-                                {comment.map((comments)=>(
+                                {comment.items.map((comments)=>(
                                 <div className={styles.commentsection} key={comments.etag}>
                                     <div className={styles.commentimg}>
                                         <img src={comments.snippet.topLevelComment.snippet.authorProfileImageUrl}/>
@@ -181,39 +223,37 @@ function ShowVideo(){
                         </div>
                     </div>
                     {
-                        show ? (
-                        <div className={styles.videolist}>
-                            {relatevideo.filter(relate => relate.snippet !== undefined).map((relate)=>(
-                                    <div className={styles.relateV}>
-                                        <div className={styles.relatethumb}>
-                                            <img src={relate.snippet.thumbnails.high.url}/>
-                                        </div>
-                                        <div className={styles.relateinfo}>
-                                            <div className={styles.relatetitle} title={relate.snippet.title}>
-                                                {(relate.snippet.title).length>35 ? `${(relate.snippet.title).slice(0,32)}...` : (relate.snippet.title)}
-                                            </div>
-                                            <div>
-                                                {relate.snippet.channelTitle}
-                                            </div>
-                                            <div>
-                                                <div>
-                                                    조회수 2.5만회 ·  <Moment fromNow>{relate.snippet.publishedAt}</Moment>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>            
-                            ))}
-                        </div>
+                        loading ? (
+                            <Loading />
                         ) : (
-                            <div className={styles.videolist}>
-                                <div className={styles.loading}>L</div>
-                            </div>
+                        <div className={styles.videolist}>
+                            {relatevideo.items.filter(relate => relate.snippet !== undefined).map((relate)=>
+                            (
+                                <Link to={`/ShowVideo/${relate.id.videoId}`} state={relate.snippet.channelId} style={{ textDecoration: 'none' }} className={styles.relateV}>
+                                    <div className={styles.relatethumb}>
+                                        <img src={relate.snippet.thumbnails.high.url}/>
+                                    </div>
+                                    <div className={styles.relateinfo}>
+                                        <div className={styles.relatetitle} title={relate.snippet.title}>
+                                            {(relate.snippet.title).length>35 ? `${(relate.snippet.title).slice(0,32)}...` : (relate.snippet.title)}
+                                        </div>
+                                        <div>
+                                            {relate.snippet.channelTitle}
+                                        </div>
+                                        <div>
+                                            <div>
+                                                조회수 2.5만회 ·  <Moment fromNow>{relate.snippet.publishedAt}</Moment>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </Link>            
+                            )
+                            )}
+                        </div>
                         )
                     }
                 </div>
-            </div>):(
-                <Loading sec={2000}/>
-            )}
+            </div>)}
         </div>
     )
 }

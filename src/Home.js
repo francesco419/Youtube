@@ -15,7 +15,7 @@ function Home() {
     }
 useEffect(()=>{
   getState();
-},[])
+},[]);
 
   return (
       <div className={styles.page}>
@@ -24,7 +24,7 @@ useEffect(()=>{
         />
         <div className={styles.box}>
             {state.map((item)=>(
-              <Link to={`/ShowVideo/${item.id}`} state={item}>
+              <Link style={{ textDecoration: 'none' }} to={`/ShowVideo/${item.id}`} state={item.snippet.channelId}>
                 <Videos
                 thmbnails_high={item.snippet.thumbnails.medium.url}
                 channelId={item.snippet.channelId}

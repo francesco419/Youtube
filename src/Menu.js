@@ -10,6 +10,7 @@ import { ReactComponent as SearchIcon } from './img/searchicon.svg';
 import { ReactComponent as Sound } from './img/sound.svg';
 import { ReactComponent as AppIcon } from './img/app.svg';
 import { ReactComponent as Event } from './img/event.svg';
+import { Link } from 'react-router-dom';
 
 function Menu({json}){
     return(
@@ -18,7 +19,9 @@ function Menu({json}){
                 <div className={styles.back}>
                     <div style={{display:'flex', alignItems:'center'}}>
                         <FontAwesomeIcon icon={faBars} size="lg" style={{color:'white'}}/>
-                        <YoutubeW className={styles.youtube}/>
+                        <Link to={`${process.env.PUBLIC_URL}/`}>
+                            <YoutubeW className={styles.youtube}/>
+                        </Link>
                     </div>
                     <div className={styles.searchmenu}>
                         <div className={styles.searchboxA}>

@@ -1,0 +1,81 @@
+.box{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.container{
+    width: 210px;
+    margin: 0 5px 20px 0;
+}
+
+.thumbnail{
+    position: relative;
+    width: 100%;
+    height: 118px;
+}
+
+.thumbnail img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.title{
+    font-size: 14px;
+    margin:0 0 24px 0;
+}
+
+.view{
+    font-size: 13px;
+    color:#aaaaaa;
+}
+
+.listnum{
+    display: flex;
+    width: 40%;
+    height: 118px;
+    position: absolute;
+    top:0;
+    left:60%;
+    background: rgb(0, 0, 0);
+    background: rgba(0, 0, 0, 0.9); /* Black see-through */
+    opacity:1;
+    justify-content: center;
+    align-items: center;
+}
+
+.overlay{
+    display: flex;
+    width: 210px;
+    height: 118px;
+    position: absolute;
+    top:0;
+    background: rgb(0, 0, 0);
+    background: rgba(0, 0, 0, 0.8); /* Black see-through */
+    transition: .1s linear;
+    opacity:0;
+    justify-content: center;
+    align-items: center;
+}
+
+.overlay{
+    display: flex;
+    width: 210px;
+    height: 118px;
+    position: absolute;
+    top:0;
+    background: rgb(0, 0, 0);
+    background: rgba(0, 0, 0, 0.8); /* Black see-through */
+    transition: .5s ease;
+    opacity:0;
+    justify-content: center;
+    align-items: center;
+}
+
+.overlay div{
+    font-size: 13px;
+}
+
+.container:hover .overlay{
+    opacity: 1;
+}

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Moment from 'react-moment';
 import 'moment/locale/ko';
 import Playlist from "./Playlist";
+import Loading from "./Loading";
 
 const API_KEY=process.env.REACT_APP_YOUTUBE_API_KEY;
 
@@ -64,7 +65,7 @@ function ChannelHome({id,channel}){
                 </div>
             </div>
             ) : (
-                <div>Loading</div>
+                <Loading sec={1500}/>
             )}
             <div className={styles.playlist}>
                 {playlists.map((list)=>(

@@ -74,6 +74,7 @@
     max-width: 1284px;
     margin: 0 auto;
     padding:0;
+    overflow: hidden;
 }
 
 .tab li{
@@ -105,3 +106,33 @@
 .height{
     height:100%;
 }
+
+.stat{
+    margin:0 0 0 50px;
+}
+
+.stat p{
+    line-height: 20px;
+    padding:5px 0;
+    border-bottom: 1px solid #585858;
+}
+
+.infomation{
+    display: flex;
+    width: 100%;
+    font-size: 14px;
+}
+
+.descript div{
+    border-bottom: 1px solid #585858;
+}
+
+.descript span{
+    color:#aaaaaa;
+    font-size: 13px;
+}
+
+.descript{
+    width:60%;
+}
+

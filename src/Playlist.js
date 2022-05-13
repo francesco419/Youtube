@@ -19,7 +19,6 @@ function Playlist({id,title}){
             setLoad(true);
         }
     }
-    console.log(playitem)
     
     useEffect(()=>{
         axi();
@@ -36,7 +35,7 @@ function Playlist({id,title}){
                     <div className={styles.videos}>
                         {playitem.data.items.map((play)=>(
                             <PlaylistVideo
-                            thumbnail={play.snippet.thumbnails.high ? play.snippet.thumbnails.high.url : error}
+                            thumbnail={play.snippet.thumbnails.high ? play.snippet.thumbnails.high.url : 'https://www.rumblerum.com/wp-content/uploads/2021/09/private-video.png'}
                             title={play.snippet.title}
                             channel={play.snippet.channelTitle}
                             channelID={play.snippet.channelId}
