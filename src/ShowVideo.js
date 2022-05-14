@@ -12,32 +12,30 @@ import axios from "axios";
 const API_KEY=process.env.REACT_APP_YOUTUBE_API_KEY;
 
 function ShowVideo(){
-    const vidId = useParams();
-    let location = useLocation();
-    const json = location.state;
+    const params = useParams();
     const [subs,setSubs]=useState([]);
     const [comment,setComment]=useState([]);
-    const [image,setImage]=useState();
     const [relatevideo,setRelateVideo]=useState([]);
-    const [loading,setLoading]= useState(true);
     const [videoinfo,setVideo]= useState([]);
-    const [once,setOnce]=useState(true);
-    
+    const [loading,setLoading]= useState(true);
+
     const getVideoAPI=async()=>{
+        let data;
         try{
             setVideo(null);
-            const response = await axios.get(`https://www.googleapis.com/youtube/v3/videos?id=${vidId.id}&part=snippet&key=${API_KEY}`);
+            const response = await axios.get(`https://www.googleapis.com/youtube/v3/videos?id=${params.id}&part=snippet,statistics&key=${API_KEY}`);
             setVideo(response.data);
+            data=response.data.items[0].snippet.channelId;
             console.log(response);
         } catch(e){
             console.log("Video Load Error");
         }
-        getSubscriberAPI();
+        getSubscriberAPI(data);
     }
-    const getSubscriberAPI=async()=>{
+    const getSubscriberAPI=async(channel)=>{
         try{
             setSubs(null);
-            const response = await axios.get(`https://www.googleapis.com/youtube/v3/channels?id=${json}&part=statistics,snippet&key=${API_KEY}`);
+            const response = await axios.get(`https://www.googleapis.com/youtube/v3/channels?id=${channel}&part=statistics,snippet&key=${API_KEY}`);
             setSubs(response.data);
             console.log(response);
         } catch(e){
@@ -48,7 +46,7 @@ function ShowVideo(){
     const getCommentAPI=async()=>{
         try{
             setComment(null);
-            const response = await axios.get(`https://www.googleapis.com/youtube/v3/commentThreads?videoId=${vidId.id}&part=snippet&key=${API_KEY}`);
+            const response = await axios.get(`https://www.googleapis.com/youtube/v3/commentThreads?videoId=${params.id}&part=snippet&key=${API_KEY}`);
             setComment(response.data);
             console.log(response);
         } catch(e){
@@ -59,7 +57,7 @@ function ShowVideo(){
     const getRelateAPI=async()=>{
         try{
             setRelateVideo(null);
-            const response = await axios.get(`https://www.googleapis.com/youtube/v3/search?relatedToVideoId=${vidId.id}&type=video&maxResults=50&part=snippet&key=${API_KEY}`);
+            const response = await axios.get(`https://www.googleapis.com/youtube/v3/search?relatedToVideoId=${params.id}&type=video&maxResults=50&part=snippet&key=${API_KEY}`);
             setRelateVideo(response.data);
             console.log(response);
         } catch(e){
@@ -122,7 +120,7 @@ function ShowVideo(){
                 <div className={styles.container}>
                     <div className={styles.video}>
                         <div className={styles.thumbnail}>
-                            <img src={json.snippet.thumbnails.high.url}/>
+                            <img src={videoinfo.items[0].snippet.thumbnails.high.url}/>
                         </div>
                         <div className={styles.info}>
                             <div className={styles.videotitle}>
@@ -131,15 +129,15 @@ function ShowVideo(){
                                         #tag
                                     </div>
                                     <div className={styles.title}>
-                                        {json.snippet.title}
+                                        {videoinfo.items[0].snippet.title}
                                     </div>
                                     <div className={styles.viewoption}>
                                         <div className={styles.viewinfo}>
-                                            조회수 {view(json.statistics.viewCount)}회 · {(json.snippet.publishedAt).slice(0,10)}.
+                                            조회수 {view(videoinfo.items[0].statistics.viewCount)}회 · {(videoinfo.items[0].snippet.publishedAt).slice(0,10)}.
                                         </div>
                                         <div className={styles.options}>
                                             <div>
-                                                ☜{likes (json.statistics.likeCount)}
+                                                ☜{likes (videoinfo.items[0].statistics.likeCount)}
                                             </div>
                                             <div>
                                                 ☞싫어요
@@ -166,18 +164,18 @@ function ShowVideo(){
                             <div className={styles.channel}>
                                 <div className={styles.iconbox}>
                                     <div className={styles.icon}>
-                                        <img src={image}/>
+                                        <img src={subs.items[0].snippet.thumbnails.high.url}/>
                                     </div>
                                 </div>
                                 <div>
                                     <div className={styles.channeltitle}>
-                                        {json.snippet.channelTitle}
+                                        {videoinfo.items[0].snippet.channelTitle}
                                     </div>
                                     <div className={styles.subs}>
-                                        구독자 {likes(subs)}
+                                        구독자 {likes(subs.items[0].statistics.subscriberCount)}
                                     </div>
                                     <div className={styles.description}>
-                                        {json.snippet.description}
+                                        {videoinfo.items[0].snippet.description}
                                     </div>
                                 </div>
                                 <div>
@@ -187,7 +185,7 @@ function ShowVideo(){
                             <div className={styles.comment}>
                                 <div className={styles.commenttop}>
                                     <div className={styles.commentcount}>
-                                        댓글 {view(json.statistics.commentCount)}개
+                                        댓글 {view(videoinfo.items[0].statistics.commentCount)}개
                                     </div>
                                     <div>
                                         # 정렬기준
@@ -229,24 +227,26 @@ function ShowVideo(){
                         <div className={styles.videolist}>
                             {relatevideo.items.filter(relate => relate.snippet !== undefined).map((relate)=>
                             (
-                                <Link to={`/ShowVideo/${relate.id.videoId}`} state={relate.snippet.channelId} style={{ textDecoration: 'none' }} className={styles.relateV}>
-                                    <div className={styles.relatethumb}>
-                                        <img src={relate.snippet.thumbnails.high.url}/>
+                            <Link to={`/ShowVideo/${relate.id.videoId}`} state={relate.snippet.channelId} style={{ textDecoration: 'none' }} className={styles.relateV}>
+                                <div className={styles.relatethumb}>
+                                    <img src={relate.snippet.thumbnails.high.url}/>
+                                </div>
+                                <div className={styles.relateinfo}>
+                                    <div className={styles.relatetitle} title={relate.snippet.title}>
+                                        {(relate.snippet.title).length>35 ? `${(relate.snippet.title).slice(0,32)}...` : (relate.snippet.title)}
                                     </div>
-                                    <div className={styles.relateinfo}>
-                                        <div className={styles.relatetitle} title={relate.snippet.title}>
-                                            {(relate.snippet.title).length>35 ? `${(relate.snippet.title).slice(0,32)}...` : (relate.snippet.title)}
-                                        </div>
-                                        <div>
+                                    <div>
+                                        <Link to={`/Channel/${relate.snippet.channelId}`} style={{ textDecoration: 'none'}} key={relate.id.videoId} className={styles.relatechannel}>
                                             {relate.snippet.channelTitle}
-                                        </div>
+                                            </Link>
+                                    </div>
+                                    <div>
                                         <div>
-                                            <div>
-                                                조회수 2.5만회 ·  <Moment fromNow>{relate.snippet.publishedAt}</Moment>
-                                            </div>
+                                            조회수 2.5만회 ·  <Moment fromNow>{relate.snippet.publishedAt}</Moment>
                                         </div>
                                     </div>
-                                </Link>            
+                                </div>
+                            </Link>
                             )
                             )}
                         </div>

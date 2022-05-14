@@ -24,7 +24,7 @@ useEffect(()=>{
         />
         <div className={styles.box}>
             {state.map((item)=>(
-              <Link style={{ textDecoration: 'none' }} to={`/ShowVideo/${item.id}`} state={item.snippet.channelId}>
+              <Link style={{ textDecoration: 'none' }} to={`/ShowVideo/${item.id}`} state={item.snippet.channelId} key={item.id}>
                 <Videos
                 thmbnails_high={item.snippet.thumbnails.medium.url}
                 channelId={item.snippet.channelId}

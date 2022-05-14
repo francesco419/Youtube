@@ -4,23 +4,31 @@ import Moment from 'react-moment';
 import 'moment/locale/ko';
 import Playlist from "./Playlist";
 import Loading from "./Loading";
+import axios from "axios";
 
 const API_KEY=process.env.REACT_APP_YOUTUBE_API_KEY;
 
 function ChannelHome({id,channel}){
-    const [trailer,setTrailer] = useState([]);
-    const [playlists,setPlaylists] = useState([]);
-    const [load, setLoad]=useState(false);
+    const [trailer,setTrailer] = useState([]),
+    [playlists,setPlaylists] = useState([]),
+    [load, setLoad]=useState(false),
+    [test,setTest] =useState([])
     const getTrailerAPI=async()=>{
-        const tfile = await(await fetch(`https://www.googleapis.com/youtube/v3/videos?id=${id}&part=snippet,statistics&key=${API_KEY}`)).json();
-        const pfile = await(await fetch(`https://www.googleapis.com/youtube/v3/playlists?channelId=${channel}&part=snippet,status&maxResults=5&key=${API_KEY}`)).json();
-        if(tfile && pfile){
+        if(id){
+            const tfile = await(await fetch(`https://www.googleapis.com/youtube/v3/videos?id=${id}&part=snippet,statistics&key=${API_KEY}`)).json();
             setTrailer(tfile.items[0]);
-            setPlaylists(pfile.items);
             setLoad(true);
         }
+        if(channel){
+            const pfile = await(await fetch(`https://www.googleapis.com/youtube/v3/playlists?channelId=${channel}&part=snippet,status&maxResults=5&key=${API_KEY}`)).json();
+            setPlaylists(pfile.items);
+            console.log("load");
+            const vfile = axios.get(`https://www.googleapis.com/youtube/v3/search?channelId=${channel}&part=snippet&key=${API_KEY}`);
+            setTest(vfile.data)
+        }
     }
-
+    console.log(test)
+    
     useEffect(()=>{
         getTrailerAPI();
     },[])

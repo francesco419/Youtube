@@ -100,13 +100,9 @@ function Channel(){
             <div className={styles.box}>
                 { load ?(
                     <div className={styles.height}>
-                        { channelinfo.brandingSettings.image.bannerExternalUrl ? 
-                        (
-                            <div className={styles.banner}>
-                                <img src={channelinfo.brandingSettings.image.bannerExternalUrl}/>
-                            </div>
-                        ): null
-                        }
+                        <div className={styles.banner}>
+                            <img src={(channelinfo.brandingSettings.image) ? channelinfo.brandingSettings.image.bannerExternalUrl : null}/>
+                        </div>
                         <div className={styles.name}>
                             <div className={styles.logo}>
                                 <img src={channelinfo.snippet.thumbnails.high.url}/>
