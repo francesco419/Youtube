@@ -98,7 +98,7 @@ API에서 각 플레이리스트에 존재하는 영상 수에 대한 데이터�
 
 커뮤니티 및 내러 카테고리는 API로 받을 수 없기에 제작할 수 없음.
 
-\*정보 탭 제작완료.
+정보 탭 제작완료.
 
 ===4===
 
@@ -106,6 +106,82 @@ API에서 각 플레이리스트에 존재하는 영상 수에 대한 데이터�
 
 fetch를 통한 API호출을 axios를 사용하여 대채하는 작업중.
 
-ShowVideo에서 다른 동영상을 라우터의 Link를 사용할시 url은 바뀌지만 랜더링이 다시 일어나지는 않는 상황 발생.
+#ShowVideo에서 다른 동영상을 라우터의 Link를 사용할시 url은 바뀌지만 랜더링이 다시 일어나지는 않는 상황 발생.
 
-오류 수정 및 페이지를 추가 제작하다보니 API할당량의 계속 초과되는중
+- 4.2
+
+=Sidemenu에서 반복되어 만들어지는 메뉴요소를 함수형 컴포넌트를 사용하여 반복되는 코드의 사용을 줄임.=
+
+        function Content({props,link,api,text}){
+       for(let i=0;i<SVGcomponent.length;i++){
+            if(props==SVGcomponent[i].name){
+            return(
+                <div className={styles.home}>
+                    <div className={styles.setting}>
+                        <div className={styles.inner}>
+                            <Link className={styles.inner} to={link} state={api ? api : null}>
+                                {SVGcomponent[i].data}
+                                <span>{text}</span>
+                            </Link>
+                        </div>
+                    </div>
+                </div>
+                )
+            }
+        }
+    }
+
+메뉴의 모든 요소가 같은 구조를 가지고있기에 SVG컴포넌트를 배열객체를 만들어 name과 data에 각 SVG컴포넌트의 이름과 컴포넌트를 할당
+
+        {
+        name:'Suggestion',
+        data:<SuggestionQ className={styles.homeq}/>,
+    }
+
+    ...
+
+    <Content props='Suggestion' link='/' text='의견 보내기'/>
+
+매개변수로 props(객체이름), link(Link에서의 경로), api(Link를 통해 전달할 state), text(메뉴요소의 이름)를 받아 반복문을 통해 props와 같은 객체이름을 가진 객체를 찾아내어 data를 Link 내부에 할당하고 이를 리턴하는 방식으로 사용하였다.
+
+=상단 버튼클릭시 Sidemenu의 크기변화 및 메인페이지의 크기변화를 적용하기위해 부모-자식 간의 데이터전송을 사용하였다.=
+
+Home.js
+
+        [data,setData]=useState(false);
+        const getData=(data)=>{
+                setData(data);
+                }
+
+        return(
+                <Menu
+                json={state}
+                getData={getData} //props로 getData(함수)를 보내준다.
+                />
+
+                ...
+
+                style={data ? {margin:'60px 0 0 72px'} : {margin:'60px 0 0 250px'}}
+        )
+
+Menu.js
+
+        function Menu({json,getData}){ //props로 getData(함수)를 받아온다.
+        const HideMenu = ()=>{
+        if(hide){
+            setHide(false);
+            getData(false); //데이터셋 : 내부의 setData에 의해 부모 data의 값이 변경.
+            console.log('hide to false');
+        }else{
+            setHide(true);
+            getData(true); //데이터셋 : 내부의 setData에 의해 부모 data의 값이 변경.
+            console.log('hide to true');
+                }
+        }
+
+        return(
+                ...
+         <button onClick={HideMenu}
+                ...
+         )
+        }

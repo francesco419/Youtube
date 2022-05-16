@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { useLocation } from 'react-router-dom';
+import { useLocation,useNavigate  } from 'react-router-dom';
 import { useEffect, useState } from "react";
 import styles from "./ShowVideo.module.css";
 import Header from "./Header";
@@ -12,7 +12,7 @@ import axios from "axios";
 const API_KEY=process.env.REACT_APP_YOUTUBE_API_KEY;
 
 function ShowVideo(){
-    const params = useParams();
+    let params = useParams();
     const [subs,setSubs]=useState([]);
     const [comment,setComment]=useState([]);
     const [relatevideo,setRelateVideo]=useState([]);
@@ -26,7 +26,6 @@ function ShowVideo(){
             const response = await axios.get(`https://www.googleapis.com/youtube/v3/videos?id=${params.id}&part=snippet,statistics&key=${API_KEY}`);
             setVideo(response.data);
             data=response.data.items[0].snippet.channelId;
-            console.log(response);
         } catch(e){
             console.log("Video Load Error");
         }
@@ -37,7 +36,6 @@ function ShowVideo(){
             setSubs(null);
             const response = await axios.get(`https://www.googleapis.com/youtube/v3/channels?id=${channel}&part=statistics,snippet&key=${API_KEY}`);
             setSubs(response.data);
-            console.log(response);
         } catch(e){
             console.log("Subscriber Load Error");
         }
@@ -48,7 +46,6 @@ function ShowVideo(){
             setComment(null);
             const response = await axios.get(`https://www.googleapis.com/youtube/v3/commentThreads?videoId=${params.id}&part=snippet&key=${API_KEY}`);
             setComment(response.data);
-            console.log(response);
         } catch(e){
             console.log("Comment Load Error");
         }
@@ -59,7 +56,6 @@ function ShowVideo(){
             setRelateVideo(null);
             const response = await axios.get(`https://www.googleapis.com/youtube/v3/search?relatedToVideoId=${params.id}&type=video&maxResults=50&part=snippet&key=${API_KEY}`);
             setRelateVideo(response.data);
-            console.log(response);
         } catch(e){
             console.log("RelateVideo Load Error");
         }
@@ -227,26 +223,30 @@ function ShowVideo(){
                         <div className={styles.videolist}>
                             {relatevideo.items.filter(relate => relate.snippet !== undefined).map((relate)=>
                             (
-                            <Link to={`/ShowVideo/${relate.id.videoId}`} state={relate.snippet.channelId} style={{ textDecoration: 'none' }} className={styles.relateV}>
-                                <div className={styles.relatethumb}>
-                                    <img src={relate.snippet.thumbnails.high.url}/>
-                                </div>
-                                <div className={styles.relateinfo}>
-                                    <div className={styles.relatetitle} title={relate.snippet.title}>
-                                        {(relate.snippet.title).length>35 ? `${(relate.snippet.title).slice(0,32)}...` : (relate.snippet.title)}
+                            <div key={relate.id.videoId}>
+                                <div className={styles.relateV}>
+                                    <div className={styles.relatethumb}>
+                                        <img src={relate.snippet.thumbnails.high.url}/>
                                     </div>
-                                    <div>
-                                        <Link to={`/Channel/${relate.snippet.channelId}`} style={{ textDecoration: 'none'}} key={relate.id.videoId} className={styles.relatechannel}>
-                                            {relate.snippet.channelTitle}
-                                            </Link>
-                                    </div>
-                                    <div>
+                                    <div className={styles.relateinfo}>
+                                        <div className={styles.relatetitle} title={relate.snippet.title}>
+                                            {(relate.snippet.title).length>35 ? `${(relate.snippet.title).slice(0,32)}...` : (relate.snippet.title)}
+                                        </div>
                                         <div>
-                                            조회수 2.5만회 ·  <Moment fromNow>{relate.snippet.publishedAt}</Moment>
+                                            <Link to={`/Channel/${relate.snippet.channelId}`} style={{ textDecoration: 'none'}} key={relate.id.videoId} className={styles.relatechannel}>
+                                                {relate.snippet.channelTitle}
+                                                </Link>
+                                        </div>
+                                        <div>
+                                            <div>
+                                                조회수 2.5만회 ·  <Moment fromNow>{relate.snippet.publishedAt}</Moment>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </Link>
+                                <Link to={`/ShowVideo/${relate.id.videoId}`} state={relate.snippet.channelId} style={{ textDecoration: 'none' }} className={styles.absolutelink} key={relate.id.videoId}>
+                                </Link>
+                            </div>
                             )
                             )}
                         </div>

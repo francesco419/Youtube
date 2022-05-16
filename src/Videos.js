@@ -58,7 +58,7 @@ function Videos({thmbnails_high,channelId,title,channelTitle,publishedAt,id,view
                                 {title.length>50 ? `${(title).slice(0,47)}...` : title}
                                 </div>
                             <div className={styles.viewf}>
-                                <Link to={`/Channel/${channelId}`} className={styles.channelf}>
+                                <Link style={{ textDecoration: 'none' }} to={`/Channel/${channelId}`} className={styles.channel}>
                                     {channelTitle}
                                 </Link>
                                  · {view(viewCount)} · <Moment fromNow>{publishedAt}</Moment>

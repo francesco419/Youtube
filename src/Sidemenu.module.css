@@ -1,5 +1,16 @@
 .sidemenu1{
-    height: 100%;
+    position: fixed;
+    top:60px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    color:#ffffff;
+    height:100%;
+    background-color: #202020;
+}
+
+.sidemenu1:hover{
+    overflow-y: auto;
 }
 
 .home{
@@ -52,4 +63,34 @@
 
 .homeq{
     margin: 0 24px 0 0;
+    width:24px;
+    height:24px;
+    color:white;
+}
+
+.smallbarA{
+    width: 72px;
+    height: 74px;
+    margin: 0;
+}
+
+.smallbarB{
+    padding:15px 0;
+}
+
+.smallbarC{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.smallbarD{
+    text-decoration: none;
+    color:#ffffff;
+    font-size: 10px;
+    text-align: center;
+}
+
+.smallbarA:hover{
+    background-color: #ffffff4f;
 }

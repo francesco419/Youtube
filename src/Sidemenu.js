@@ -21,222 +21,191 @@ import { ReactComponent as CustomersQ } from './img/customers.svg';
 import { ReactComponent as SuggestionQ } from './img/suggestion.svg';
 import styles from "./Sidemenu.module.css";
 import {Link} from "react-router-dom";
+import { useEffect, useState } from 'react';
 
-function Sidemenu({json}){
-    const data = json;
-    const aa = 'aaa';
-    return(
-        <div className={styles.sidemenu1}>
-            <div className={styles.part}>
-                <div className={styles.home}>
-                    <div className={styles.setting}>
-                        <div className={styles.inner}>
-                            <HomeQ className={styles.homeq} style={{width:'24px',height:'24px',color:'white'}}/>
-                            <span>홈</span>
-                        </div>
-                    </div>
-                </div>
-                <div className={styles.home}>
-                    <div className={styles.setting}>
-                        <Link className={styles.inner} to="/Search" state={json}>
-                            <SearchQ className={styles.homeq} style={{width:'24px',height:'24px',color:'white'}}/>
-                            <span>탐색</span>
-                        </Link>
-                    </div>
-                </div>
-                <div className={styles.home}>
-                    <div className={styles.setting}>
-                        <div className={styles.inner}>
-                            <Link className={styles.inner} to="/Shorts" state={json}>
-                                <ShortsQ className={styles.homeq} style={{width:'24px',height:'24px',color:'white'}}/>
-                                <span>Shorts</span>
+function Sidemenu({json,hide}){
+    const [menustatus,setmenustatus]=useState(hide);
+    const SVGcomponent = [
+    {
+        name:'Home',
+        data:<HomeQ className={hide ? styles.smallbarD : styles.homeq}/>,
+    },
+    {
+        name:'Search',
+        data: <SearchQ className={hide ? styles.smallbarD : styles.homeq}/>,
+    },
+    {
+        name:'Shorts',
+        data:<ShortsQ className={hide ? styles.smallbarD : styles.homeq}/>,
+    },
+    {
+        name:'Subsc',
+        data:<SubscQ className={hide ? styles.smallbarD : styles.homeq}/>,
+    },
+    {
+        name:'Origin',
+        data:<OriginQ className={hide ? styles.smallbarD : styles.homeq}/>,
+    },
+    {
+        name:'Music',
+        data:<MusicQ className={hide ? styles.smallbarD : styles.homeq}/>,
+    },
+    {
+        name:'Store',
+        data:<StoreQ className={hide ? styles.smallbarD : styles.homeq}/>,
+    },
+    {
+        name:'Save',
+        data:<SaveQ className={hide ? styles.smallbarD : styles.homeq}/>,
+    },
+    {
+        name:'History',
+        data:<HistoryQ className={styles.homeq}/>,
+    },
+    {
+        name:'Myvideo',
+        data:<MyvideoQ className={styles.homeq}/>,
+    },
+    {
+        name:'LastervideoQ',
+        data:<LastervideoQ className={styles.homeq}/>,
+    },
+    {
+        name:'Like',
+        data:<LikeQ className={styles.homeq}/>,
+    },
+    {
+        name:'Movie',
+        data:<MovieQ className={styles.homeq}/>,
+    },
+    {
+        name:'Game',
+        data:<GameQ className={styles.homeq}/>,
+    },
+    {
+        name:'Livestream',
+        data:<LivestreamQ className={styles.homeq}/>,
+    },
+    {
+        name:'Edu',
+        data:<EduQ className={styles.homeq}/>,
+    },
+    {
+        name:'Sports',
+        data:<SportsQ className={styles.homeq}/>,
+    },
+    {
+        name:'Setting',
+        data:<SettingQ className={styles.homeq}/>,
+    },
+    {
+        name:'Singo',
+        data:<SingoQ className={styles.homeq}/>,
+    },
+    {
+        name:'Customers',
+        data:<CustomersQ className={styles.homeq}/>,
+    },
+    {
+        name:'Suggestion',
+        data:<SuggestionQ className={styles.homeq}/>,
+    }
+];
+
+    function Content({props,link,api,text}){
+       for(let i=0;i<SVGcomponent.length;i++){
+            if(props==SVGcomponent[i].name){
+            return(
+                hide ? (
+                <div className={styles.smallbarA}>
+                    <div className={styles.smallbarB}>
+                        <div className={styles.smallbarC}>
+                            <Link className={styles.smallbarD} to={link} state={api ? api : null}>
+                                {SVGcomponent[i].data}
+                                <div>{text}</div>
                             </Link>
                         </div>
                     </div>
                 </div>
+                ):(
                 <div className={styles.home}>
                     <div className={styles.setting}>
                         <div className={styles.inner}>
-                            <SubscQ className={styles.homeq} style={{width:'24px',height:'24px',color:'white'}}/>
-                            <span>구독</span>
+                            <Link className={styles.inner} to={link} state={api ? api : null}>
+                                {SVGcomponent[i].data}
+                                <span>{text}</span>
+                            </Link>
                         </div>
                     </div>
                 </div>
-                <div className={styles.home}>
-                    <div className={styles.setting}>
-                        <div className={styles.inner}>
-                            <OriginQ className={styles.homeq} style={{width:'24px',height:'24px',color:'white'}}/>
-                            <span>Originals</span>
-                        </div>
-                    </div>
+                )
+                )
+            }
+        }
+    }
+
+    return(
+        <div className={styles.sidemenu1}>
+            {hide ? (
+                <div className={styles.smallbar}>
+                    <Content props='Home' link='/' text='홈'/>
+                    <Content props='Search' link='/Search' text='탐색' api={json}/>
+                    <Content props='Shorts' link='/Shorts' text='Shorts' api={json}/>
+                    <Content props='Subsc' link='/' text='구독'/>
+                    <Content props='Original' link='/Originals' text='Originals'/>
+                    <Content props='Music' link='/' text='YouTube Music'/>
+                    <Content props='Store' link='/' text='보관함'/>
+                    <Content props='Save' link='/' text='오프라인 저장 동영상'/>
                 </div>
-                <div className={styles.home}>
-                    <div className={styles.setting}>
-                        <div className={styles.inner}>
-                            <MusicQ className={styles.homeq} style={{width:'24px',height:'24px',color:'white'}}/>
-                            <span>YouTube Music</span>
-                        </div>
-                    </div>
+            ):(
+                <div className={styles.part}>
+                    <Content props='Home' link='/' text='홈'/>
+                    <Content props='Search' link='/Search' text='탐색' api={json}/>
+                    <Content props='Shorts' link='/Shorts' text='Shorts' api={json}/>
+                    <Content props='Subsc' link='/' text='구독'/>
+                    <Content props='Original' link='/Originals' text='Originals'/>
+                    <Content props='Music' link='/' text='YouTube Music'/>
+                    <div className={styles.part2}>
+                    <Content props='Store' link='/' text='보관함'/>
+                    <Content props='History' link='/' text='시청기록'/>
+                    <Content props='Myvideo' link='/' text='내 동영상'/>
+                    <Content props='Lastervideo' link='/' text='나중에 볼 동영상'/>
+                    <Content props='Save' link='/' text='오프라인 저장 동영상'/>
+                    <Content props='Like' link='/' text='좋아요 표시한 동영상'/>
+                    <Content props='Like' link='/' text='더보기'/>
                 </div>
-                <div className={styles.part2}>
-                    <div className={styles.home}>
+                <div className={styles.set}>
+                    <div className={styles.nohover}>
                         <div className={styles.setting}>
                             <div className={styles.inner}>
-                                <StoreQ className={styles.homeq} style={{width:'24px',height:'24px',color:'white'}}/>
-                                <span>보관함</span>
+                                <span style={{color: '#aaaaaa'}}>구독</span>
                             </div>
                         </div>
                     </div>
-                    <div className={styles.home}>
-                        <div className={styles.setting}>
-                            <div className={styles.inner}>
-                                <HistoryQ className={styles.homeq} style={{width:'24px',height:'24px',color:'white'}}/>
-                                <span>시청 기록</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={styles.home}>
-                        <div className={styles.setting}>
-                            <div className={styles.inner}>
-                                <MyvideoQ className={styles.homeq} style={{width:'24px',height:'24px',color:'white'}}/>
-                                <span>내 동영상</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={styles.home}>
-                        <div className={styles.setting}>
-                            <div className={styles.inner}>
-                                <LastervideoQ className={styles.homeq} style={{width:'24px',height:'24px',color:'white'}}/>
-                                <span>나중에 볼 동영상</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={styles.home}>
-                        <div className={styles.setting}>
-                            <div className={styles.inner}>
-                                <SaveQ className={styles.homeq} style={{width:'24px',height:'24px',color:'white'}}/>
-                                <span>오프라인 저장 동영상</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={styles.home}>
-                        <div className={styles.setting}>
-                            <div className={styles.inner}>         
-                                <LikeQ className={styles.homeq} style={{width:'24px',height:'24px',color:'white'}}/>
-                                <span>좋아요 표시한 동영상</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={styles.home}>
-                        <div className={styles.setting}>
-                            <div className={styles.inner}>
-                                <LikeQ className={styles.homeq} style={{width:'24px',height:'24px',color:'white'}}/>
-                                <span>더보기</span>
-                            </div>
-                        </div>
-                    </div>
-            </div>
-            <div className={styles.set}>
-                <div className={styles.nohover}>
-                    <div className={styles.setting}>
-                        <div className={styles.inner}>
-                            <span style={{color: '#aaaaaa'}}>구독</span>
-                        </div>
-                    </div>
+                    <Content props='Like' link='/' text='채널 탐색'/>
                 </div>
-                <div className={styles.home}>
-                    <div className={styles.setting}>
-                        <div className={styles.inner}>
-                            <LikeQ className={styles.homeq} style={{width:'24px',height:'24px',color:'white'}}/>
-                            <span>채널 탐색</span>
+                <div className={styles.set}>
+                    <div className={styles.nohover}>
+                        <div className={styles.setting}>
+                            <div className={styles.inner}>
+                                <span style={{color: '#aaaaaa'}}>YOUTUBE 더보기</span>
+                            </div>
                         </div>
                     </div>
+                    <Content props='Movie' link='/' text='영화'/>
+                    <Content props='Game' link='/' text='개임'/>
+                    <Content props='Livestream' link='/' text='실시간'/>
+                    <Content props='Edu' link='/' text='학습'/>
+                    <Content props='Sports' link='/' text='스포츠'/>
+                </div>
+                <div className={styles.set}>
+                    <Content props='Setting' link='/' text='설정'/>
+                    <Content props='Singo' link='/' text='신고 기록'/>
+                    <Content props='Customers' link='/' text='고객센터'/>
+                    <Content props='Suggestion' link='/' text='의견 보내기'/>
                 </div>
             </div>
-            <div className={styles.set}>
-                <div className={styles.nohover}>
-                    <div className={styles.setting}>
-                        <div className={styles.inner}>
-                            <span style={{color: '#aaaaaa'}}>YOUTUBE 더보기</span>
-                        </div>
-                    </div>
-                </div>
-                <div className={styles.home}>
-                    <div className={styles.setting}>
-                        <div className={styles.inner}>
-                            <MovieQ className={styles.homeq} style={{width:'24px',height:'24px',color:'white'}}/>
-                            <span>영화</span>
-                        </div>
-                    </div>
-                </div>
-                <div className={styles.home}>
-                    <div className={styles.setting}>
-                        <div className={styles.inner}>
-                            <GameQ className={styles.homeq} style={{width:'24px',height:'24px',color:'white'}}/>
-                            <span>개임</span>
-                        </div>
-                    </div>
-                </div>
-                <div className={styles.home}>
-                    <div className={styles.setting}>
-                        <div className={styles.inner}>
-                            <LivestreamQ className={styles.homeq} style={{width:'24px',height:'24px',color:'white'}}/>
-                            <span>실시간</span>
-                        </div>
-                    </div>
-                </div>
-                <div className={styles.home}>
-                    <div className={styles.setting}>
-                        <div className={styles.inner}>
-                            <EduQ className={styles.homeq} style={{width:'24px',height:'24px',color:'white'}}/>
-                            <span>학습</span>
-                        </div>
-                    </div>
-                </div>
-                <div className={styles.home}>
-                    <div className={styles.setting}>
-                        <div className={styles.inner}>
-                            <SportsQ className={styles.homeq} style={{width:'24px',height:'24px',color:'white'}}/>
-                            <span>스포츠</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div className={styles.set}>
-                <div className={styles.home}>
-                    <div className={styles.setting}>
-                        <div className={styles.inner}>
-                            <SettingQ className={styles.homeq} style={{width:'24px',height:'24px',color:'white'}}/>
-                            <span>설정</span>
-                        </div>
-                    </div>
-                </div>
-                <div className={styles.home}>
-                    <div className={styles.setting}>
-                        <div className={styles.inner}>
-                            <SingoQ className={styles.homeq} style={{width:'24px',height:'24px',color:'white'}}/>
-                            <span>신고 기록</span>
-                        </div>
-                    </div>
-                </div>
-                <div className={styles.home}>
-                    <div className={styles.setting}>
-                        <div className={styles.inner}>
-                            <CustomersQ className={styles.homeq} style={{width:'24px',height:'24px',color:'white'}}/>
-                            <span>고객센터</span>
-                        </div>
-                    </div>
-                </div>
-                <div className={styles.home}>
-                    <div className={styles.setting}>
-                        <div className={styles.inner}>
-                            <SuggestionQ className={styles.homeq} style={{width:'24px',height:'24px',color:'white'}}/>
-                            <span>의견 보내기</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            )}
         </div>
     )
 }
