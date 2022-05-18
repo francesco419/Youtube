@@ -185,3 +185,32 @@ Menu.js
                 ...
          )
         }
+
+- 4.3
+
+페이지를 맨 처음 로드시 안내문인 Info를 띄우도록 설정하고 확인 버튼을 누르면 SessionStorage에 안내문에 대한 표시데이터(boolean)을 저장, 저장된 데이터가 false일시, 페이지를 닫고 다시로드하지 않는 이상, 안내문을 띄우지 않도록 설정하였다.
+
+    [intro,setIntro]=useState(session==true || session===null ? true : false);
+
+    ...
+
+    const setSession=()=>{
+        setIntro(false);
+        const data = {setting: intro};
+        sessionStorage.setItem("setting", JSON.stringify(intro));
+    }
+
+    ...
+
+    return(
+        ...
+
+        {intro ? (<div className={styles.intro}>
+          <div className={styles.inform}>
+            <p>{informtext}</p>
+            <button onClick={setSession} className={styles.confirm}>확인</button>
+          </div>
+        </div>): null}
+
+        ...
+    )

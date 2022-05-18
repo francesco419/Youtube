@@ -9,10 +9,13 @@ import axios from 'axios';
 const API_KEY=process.env.REACT_APP_YOUTUBE_API_KEY;
 
 function Home() {
+  let session = window.sessionStorage.getItem("setting");
   const [state,setState] = useState([]),
   [loading,setLoading]=useState(true),
-  [data,setData]=useState(false);
-  
+  [data,setData]=useState(false),
+  [intro,setIntro]=useState(session==true || session===null ? true : false);
+  const informtext="현재 페이지는 유튜브를 클로닝한 페이지로서,\n각 페이지는 유튜브와 같이 설정을 하였으나 영상은 작동하지 않습니다.";
+
   const count = "50";
     const getState=async()=>{
       try{
@@ -24,16 +27,29 @@ function Home() {
     }
   }
 
+  const setSession=()=>{
+    setIntro(false);
+    const data = {setting: intro};
+    sessionStorage.setItem("setting", JSON.stringify(intro));
+  }
+
   const getData=(data)=>{
     setData(data);
     console.log(data)
   }
+
 useEffect(()=>{
   getState();
 },[]);
 
   return (
       <div className={styles.page}>
+      {intro ? (<div className={styles.intro}>
+          <div className={styles.inform}>
+            <p>{informtext}</p>
+            <button onClick={setSession} className={styles.confirm}>확인</button>
+          </div>
+        </div>): null}
         <Menu
         json={state}
         getData={getData}
