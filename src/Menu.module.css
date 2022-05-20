@@ -8,6 +8,7 @@
     background: transparent;
     top:0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);;;
+    z-index: 99;
 }
 
 .back{
@@ -62,6 +63,10 @@
     width:35px;
     height:35px;
     background-color: #181818;
+}
+
+.submitform{
+    display: flex;
 }
 
 .searchbutton{

@@ -1,6 +1,7 @@
 .box{
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     padding:20px;
     background-color: #181818;
     color:white;
@@ -8,16 +9,12 @@
 }
 
 .container{
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    max-width: 1284px;
+    margin: 0 auto;
 }
 
 .category{
     display: flex;
-    flex-wrap: 1;
-    margin: 0 auto;
+    flex-wrap: wrap;
 }
 
 .trending{

@@ -66,7 +66,7 @@ function Sidemenu({json,hide}){
         data:<MyvideoQ className={styles.homeq}/>,
     },
     {
-        name:'LastervideoQ',
+        name:'Lastervideo',
         data:<LastervideoQ className={styles.homeq}/>,
     },
     {
@@ -151,7 +151,7 @@ function Sidemenu({json,hide}){
                     <Content props='Search' link='/Search' text='탐색' api={json}/>
                     <Content props='Shorts' link='/Shorts' text='Shorts' api={json}/>
                     <Content props='Subsc' link='/' text='구독'/>
-                    <Content props='Original' link='/Originals' text='Originals'/>
+                    <Content props='Origin' link='/Originals' text='Originals'/>
                     <Content props='Music' link='/' text='YouTube Music'/>
                     <Content props='Store' link='/' text='보관함'/>
                     <Content props='Save' link='/' text='오프라인 저장 동영상'/>
@@ -162,7 +162,7 @@ function Sidemenu({json,hide}){
                     <Content props='Search' link='/Search' text='탐색' api={json}/>
                     <Content props='Shorts' link='/Shorts' text='Shorts' api={json}/>
                     <Content props='Subsc' link='/' text='구독'/>
-                    <Content props='Original' link='/Originals' text='Originals'/>
+                    <Content props='Origin' link='/Originals' text='Originals'/>
                     <Content props='Music' link='/' text='YouTube Music'/>
                     <div className={styles.part2}>
                     <Content props='Store' link='/' text='보관함'/>

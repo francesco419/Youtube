@@ -46,10 +46,11 @@ function Videos({thmbnails_high,channelId,title,channelTitle,publishedAt,id,view
                             <button className={styles.op}></button>
                         </div>
                     </div>
+                    <Link className={styles.linkto} to={`/ShowVideo/${id}`} state={channelId}></Link>
                 </div>
             ):(
                 <div className={styles.false}>
-                    <div className={styles.thumbnails}>
+                    <div className={styles.thumbnailsf}>
                         <img src={thmbnails_high} alt=""/>
                     </div>
                     <div className={styles.infof}>
@@ -71,6 +72,7 @@ function Videos({thmbnails_high,channelId,title,channelTitle,publishedAt,id,view
                             <button className={styles.op}></button>
                         </div>
                     </div>
+                    <Link className={styles.linkto} to={`/ShowVideo/${id}`} state={channelId}></Link>
                 </div>
             )}
         </div>

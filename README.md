@@ -214,3 +214,37 @@ Menu.js
 
         ...
     )
+
+- 4.4
+
+이전 ShowVideos페이지에서 relatevideo에 대해서 url이 변경되지만 페이지가 로드되지 않는 이슈가 있었다.(line:87)
+
+오류의 원인은 Route설정시
+
+    <Route path="/ShowVideo/:id" element={<ShowVideo/>} />
+
+에서 path의 "/ShowVideo/:id"에서 :id라는 매개변수가 바뀌어도, "/ShowVideo/:id"와 같은 형태를 취하고 있기 때문에 url에 대한 변화를 감지하지 못하고 페이지에서 url만 바뀔뿐 페이지가 로드되지 않았다.
+
+이를 해결하기 위해 useNavigator Hook을 사용하였고,
+
+    const onchange=(url)=>{
+        navigate(url); //페이지를 url로 이동
+    }
+
+을 Link의 Onclick에 추가시켜 작동되도록 하였으나 이또한 위에서 언급한 이유와 비슷한 이유로인해 페이지가 로드되지 않았다.
+
+페이지가 다시 로드되는 것을 발생시키기위해
+
+    navigate(0); //페이지 새로고침
+
+를 함수의 끝에 추가했고, 이를 통해 의도한대로 작동하는것을 확인 할 수 있었다.
+
+검색창에 검색시 나오는 페이지를 SearchVideo로 제작하였다.
+
+Youtube API에서
+
+    `https://www.googleapis.com/youtube/v3/search?q=${value}&part=snippet&key=${API_KEY}&regionCode=KR`
+
+를 통해 검색할 검색어인 q에 페이지매개변수로 받은 값을 넣어주고 지역은 한국으로 설정한 다음 검색한 API데이터를 호출하여 사용하였다.
+
+페이지에서 보여지는 API 데이터를 이전에 제작한 Videos컴포넌트를 통해 동영상을 노출시켰다.

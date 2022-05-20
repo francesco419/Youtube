@@ -10,10 +10,13 @@ import { ReactComponent as SearchIcon } from './img/searchicon.svg';
 import { ReactComponent as Sound } from './img/sound.svg';
 import { ReactComponent as AppIcon } from './img/app.svg';
 import { ReactComponent as Event } from './img/event.svg';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
-function Menu({json,getData}){
-    const [hide,setHide]=useState(false);
+function Menu({json,getData,ishide}){
+    const [hide,setHide]=useState(ishide ? ishide : false),
+    [search,setSerch]=useState(null);
+    let navigate = useNavigate();
+
     const HideMenu = ()=>{
         if(hide){
             setHide(false);
@@ -24,6 +27,18 @@ function Menu({json,getData}){
             getData(true);
             console.log('hide to true');
         }
+    }
+
+    const onSearch=(e)=>{
+        if(search===null || search===' '){
+            return;
+        }else{
+            navigate(`/SearchVideo/${search}`);
+        }
+    }
+
+    const onChanges=(e)=>{
+        setSerch(e.target.value);
     }
 
     return(
@@ -42,12 +57,14 @@ function Menu({json,getData}){
                     <div className={styles.searchmenu}>
                         <div className={styles.searchboxA}>
                             <div className={styles.searchicon}>
-                            <SearchIcon style={{width:'15px',height:'15px',color:'white'}}/>
+                                <SearchIcon style={{width:'15px',height:'15px',color:'white'}}/>
                             </div>
-                            <input className={styles.search} placeholder='검색' type='text'/>
-                            <div className={styles.searchbutton}>
-                                <SearchIcon style={{width:'20px',height:'20px',color:'white'}}/>
-                            </div>
+                            <form onSubmit={e=> onSearch(e)} className={styles.submitform}>
+                                <input className={styles.search} placeholder='검색' type='text' onChange={onChanges}/>
+                                <button type='submit' className={styles.searchbutton}>
+                                    <SearchIcon style={{width:'20px',height:'20px',color:'white'}}/>
+                                </button>
+                            </form>
                         </div>
                         <div className={styles.sound}>
                             <Sound style={{width:'24px',height:'24px',color:'white'}}/>

@@ -4,6 +4,7 @@ import ShowVideo from "./ShowVideo";
 import Shorts from "./Shorts";
 import Channel from "./Channel";
 import Originals from "./Originals";
+import SearchVideo from "./SearchVideo";
 import {
   BrowserRouter,
   Routes,
@@ -14,6 +15,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="/SearchVideo/:id" element={<SearchVideo/>} />
         <Route path="/Originals/" element={<Originals/>} />
         <Route path="/ShowVideo/:id" element={<ShowVideo/>} />
         <Route path="/Channel/:id" element={<Channel/>} />

@@ -1,23 +1,22 @@
-import { useParams } from "react-router-dom";
-import { useLocation,useNavigate  } from 'react-router-dom';
+import { Link,useNavigate,useParams  } from 'react-router-dom';
 import { useEffect, useState } from "react";
 import styles from "./ShowVideo.module.css";
 import Header from "./Header";
 import Moment from 'react-moment';
 import 'moment/locale/ko';
 import Loading from "./Loading";
-import { Link } from "react-router-dom";
 import axios from "axios";
 
 const API_KEY=process.env.REACT_APP_YOUTUBE_API_KEY;
 
 function ShowVideo(){
     let params = useParams();
-    const [subs,setSubs]=useState([]);
-    const [comment,setComment]=useState([]);
-    const [relatevideo,setRelateVideo]=useState([]);
-    const [videoinfo,setVideo]= useState([]);
-    const [loading,setLoading]= useState(true);
+    const [subs,setSubs]=useState([]),
+    [comment,setComment]=useState([]),
+    [nocomment,setNocomment]=useState(false),
+    [relatevideo,setRelateVideo]=useState([]),
+    [videoinfo,setVideo]= useState([]),
+    [loading,setLoading]= useState(true);
 
     const getVideoAPI=async()=>{
         let data;
@@ -48,6 +47,7 @@ function ShowVideo(){
             setComment(response.data);
         } catch(e){
             console.log("Comment Load Error");
+            setNocomment(true);
         }
         getRelateAPI();
     }
@@ -104,6 +104,13 @@ function ShowVideo(){
                 return `${(count/1000).toFixed(1)}천`;
             }
         }
+    }
+    let navigate = useNavigate();
+
+    const changeurl=(url)=>{
+        console.log(url)
+        navigate(url);
+        navigate(0);
     }
 
     return(
@@ -178,6 +185,7 @@ function ShowVideo(){
                                     <button className={styles.subbutton}>구독</button>
                                 </div>
                             </div>
+                            {nocomment ? <h1> 댓글 기능을 사용할수 없습니다. </h1> :(
                             <div className={styles.comment}>
                                 <div className={styles.commenttop}>
                                     <div className={styles.commentcount}>
@@ -214,6 +222,7 @@ function ShowVideo(){
                                 </div>   
                                 ))}
                             </div>
+                            )}
                         </div>
                     </div>
                     {
@@ -243,9 +252,9 @@ function ShowVideo(){
                                             </div>
                                         </div>
                                     </div>
+                                    <Link to={`/ShowVideo/${relate.id.videoId}`} onClick={()=>changeurl()} state={relate.snippet.channelId} style={{ textDecoration: 'none' }} className={styles.absolutelink} key={relate.id.videoId}>
+                                    </Link>
                                 </div>
-                                <Link to={`/ShowVideo/${relate.id.videoId}`} state={relate.snippet.channelId} style={{ textDecoration: 'none' }} className={styles.absolutelink} key={relate.id.videoId}>
-                                </Link>
                             </div>
                             )
                             )}

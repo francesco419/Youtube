@@ -20,6 +20,15 @@
     width: 100%;
 }
 
+.menubutton{
+    position: relative;
+    height: 20px;
+    width: 20px;
+    border: 0;
+    background-color: #ffffff00;
+    opacity: 1;
+}
+
 .youtube{
     width:120px;
     height:50px;
