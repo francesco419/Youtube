@@ -168,12 +168,13 @@ function ShowVideo(){
                                 <div className={styles.iconbox}>
                                     <div className={styles.icon}>
                                         <img src={subs.items[0].snippet.thumbnails.high.url}/>
+                                        <Link to={`/Channel/${videoinfo.items[0].snippet.channelId}`} className={styles.absolutelink}></Link>
                                     </div>
                                 </div>
                                 <div>
-                                    <div className={styles.channeltitle}>
+                                    <Link style={{ textDecoration: 'none' }} to={`/Channel/${videoinfo.items[0].snippet.channelId}`} className={styles.channeltitle}>
                                         {videoinfo.items[0].snippet.channelTitle}
-                                    </div>
+                                    </Link>
                                     <div className={styles.subs}>
                                         구독자 {likes(subs.items[0].statistics.subscriberCount)}
                                     </div>

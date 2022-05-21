@@ -6,8 +6,8 @@
 }
 
 .trailerthumb{
-    height:238px;
-    width:424px;
+    max-height:238px;
+    min-width:424px;
 }
 
 .trailerthumb img{

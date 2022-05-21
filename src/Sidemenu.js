@@ -20,7 +20,7 @@ import { ReactComponent as SingoQ } from './img/singo.svg';
 import { ReactComponent as CustomersQ } from './img/customers.svg';
 import { ReactComponent as SuggestionQ } from './img/suggestion.svg';
 import styles from "./Sidemenu.module.css";
-import {Link} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
 import { useEffect, useState } from 'react';
 
 function Sidemenu({json,hide}){
@@ -110,6 +110,8 @@ function Sidemenu({json,hide}){
         data:<SuggestionQ className={styles.homeq}/>,
     }
 ];
+
+let location = useLocation();
 
     function Content({props,link,api,text}){
        for(let i=0;i<SVGcomponent.length;i++){

@@ -117,16 +117,14 @@ function Channel(){
                                 </div>
                             </div>
                         </div>
-                        <div>
-                            <ul className={styles.tab}>
+                        <ul className={styles.tab}>
                                 <li style={tab===0 ? {color:'#eeeeee'} : null} onClick={()=>{setTab(0)}}>홈</li>
                                 <li style={tab===1 ? {color:'#eeeeee'} : null} onClick={()=>{setTab(1)}}>동영상</li>
                                 <li style={tab===2 ? {color:'#eeeeee'} : null} onClick={()=>{setTab(2)}}>재생목록</li>
                                 <li style={tab===3 ? {color:'#eeeeee'} : null} onClick={()=>{setTab(3)}}>커뮤니티</li>
                                 <li style={tab===4 ? {color:'#eeeeee'} : null} onClick={()=>{setTab(4)}}>채널</li>
                                 <li style={tab===5 ? {color:'#eeeeee'} : null} onClick={()=>{setTab(5)}}>정보</li>
-                            </ul>
-                        </div>
+                        </ul>
                         <div className={styles.tabpage}>
                             <div className={styles.container}>
                                 <TabContent props={tab}/>
