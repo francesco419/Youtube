@@ -1,0 +1,41 @@
+{
+  "files": {
+    "main.css": "/Youtube/static/css/main.c545b7a6.css",
+    "main.js": "/Youtube/static/js/main.b27a84f4.js",
+    "static/media/YouTube-White-Full-Color-Logo.wine.svg": "/Youtube/static/media/YouTube-White-Full-Color-Logo.wine.aa59ad1d39d85d569cf0fae35a7ec39c.svg",
+    "static/media/YouTube-Logo.wine.svg": "/Youtube/static/media/YouTube-Logo.wine.fe035137dbd3c56c1e16cf6e9de08760.svg",
+    "static/media/setting.svg": "/Youtube/static/media/setting.ccbef73aa6c9694bb860624e636fbdac.svg",
+    "static/media/originals.svg": "/Youtube/static/media/originals.8c4f47cdc2281b9d2a4733a17067db4a.svg",
+    "static/media/livestream.svg": "/Youtube/static/media/livestream.b4027fcd696a22abfdf8e8bf928d0f88.svg",
+    "static/media/customers.svg": "/Youtube/static/media/customers.1a9f3fad270a2067f376472ebf2a7db8.svg",
+    "index.html": "/Youtube/index.html",
+    "static/media/shorts.svg": "/Youtube/static/media/shorts.879341b16bbc83b4c346c82af14d35d2.svg",
+    "static/media/searchY.svg": "/Youtube/static/media/searchY.323a855eae2cfdd533bcdebc3e418d01.svg",
+    "static/media/like.svg": "/Youtube/static/media/like.0c01f59cf8a11da8bb28b6590f22bc6a.svg",
+    "static/media/event.svg": "/Youtube/static/media/event.a9f6455443b708c7a56c4814b59ce158.svg",
+    "static/media/game.svg": "/Youtube/static/media/game.46f563579b541e33be9b2a868aea69f8.svg",
+    "static/media/sports.svg": "/Youtube/static/media/sports.d57814c8dde8f499f765ead02867beb1.svg",
+    "static/media/app.svg": "/Youtube/static/media/app.8154429368b149488d98764619642a2b.svg",
+    "static/media/history.svg": "/Youtube/static/media/history.d346fe21d9483fc2a49b490e71fa6fe5.svg",
+    "static/media/sound.svg": "/Youtube/static/media/sound.c38d033bf9c02524799d3047069a19b9.svg",
+    "static/media/edu.svg": "/Youtube/static/media/edu.47844c8406d96b7ee568ef595791fc9d.svg",
+    "static/media/movie.svg": "/Youtube/static/media/movie.8d2404add73326e153793877a714560b.svg",
+    "static/media/latervideo.svg": "/Youtube/static/media/latervideo.2ffb26357c377910a5762c39c710fa6a.svg",
+    "static/media/music.svg": "/Youtube/static/media/music.eed0b7961bfa57149c801b0b70f374e1.svg",
+    "static/media/searchicon.svg": "/Youtube/static/media/searchicon.42aff738f707eb0e815dc8d7868c50a9.svg",
+    "static/media/make.svg": "/Youtube/static/media/make.cd361237c5e9601b7db64e360fe98aa2.svg",
+    "static/media/suggestion.svg": "/Youtube/static/media/suggestion.24b3a209d87d782dd3e24589023a91f0.svg",
+    "static/media/singo.svg": "/Youtube/static/media/singo.52faaa5dbc4e434c496d9089f204ffb0.svg",
+    "static/media/subscribe.svg": "/Youtube/static/media/subscribe.a5088ae29edc8f8e512c6880a92e0fe1.svg",
+    "static/media/save.svg": "/Youtube/static/media/save.0638982d527c8c3de563b59ef12cc5f0.svg",
+    "static/media/store.svg": "/Youtube/static/media/store.5f536227851aae04aef12eecd50fec6d.svg",
+    "static/media/myvideo.svg": "/Youtube/static/media/myvideo.1c18a62eee8741c6fe95256f9cb24936.svg",
+    "static/media/home.svg": "/Youtube/static/media/home.cd5864178b716e84d81662f648e0d98e.svg",
+    "main.c545b7a6.css.map": "/Youtube/static/css/main.c545b7a6.css.map",
+    "main.b27a84f4.js.map": "/Youtube/static/js/main.b27a84f4.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c545b7a6.css",
+    "static/js/main.b27a84f4.js"
+  ]
+}
