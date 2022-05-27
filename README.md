@@ -248,3 +248,25 @@ Youtube API에서
 를 통해 검색할 검색어인 q에 페이지매개변수로 받은 값을 넣어주고 지역은 한국으로 설정한 다음 검색한 API데이터를 호출하여 사용하였다.
 
 페이지에서 보여지는 API 데이터를 이전에 제작한 Videos컴포넌트를 통해 동영상을 노출시켰다.
+
+- 4.5
+
+윈도우의 넓이를 감지하여 변화가 생길시에 이에 대해 컴포넌트의 크기를 유동적으로 조정할 수 있다.
+
+    [innerW,setInnerW]=useState('1098px');
+
+    const resizeW=()=>{
+        if(window.innerWidth<=1350)
+        setInnerW(`${window.innerWidth-250}px`);
+    }
+
+     useEffect(()=>{
+        window.addEventListener('resize', resizeW);
+        return()=>{
+            window.removeEventListener('resize', resizeW);
+        }
+    },[])
+
+    ...
+
+검색결과의 동영상 정보의 크기조정 필요.

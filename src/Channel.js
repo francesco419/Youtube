@@ -14,7 +14,8 @@ function Channel(){
     const [tab,setTab]= useState(0);
     const ID = useParams();
     const [channelinfo, setChannelInfo]=useState([]);
-    const [load, setLoad]=useState(false);
+    const [load, setLoad]=useState(false),
+    [data,setData]=useState(false);
 
     const getItem=async()=>{
         const jfile = await(await fetch(`https://www.googleapis.com/youtube/v3/channels?id=${ID.id}&part=snippet,brandingSettings,statistics&key=${API_KEY}`)).json();
@@ -46,6 +47,10 @@ function Channel(){
             }
         }
     }
+
+    const getData=(data)=>{
+        setData(data);
+      }
 
     function TabContent({props}){
         if(props === 0){
@@ -96,8 +101,10 @@ function Channel(){
 
     return(
         <div className={styles.page}>
-            <Menu/>
-            <div className={styles.box}>
+            <Menu
+            getData={getData}
+            />
+            <div className={styles.box} style={data ? {margin:'60px 0 0 72px'} : {margin:'60px 0 0 248px'}}>
                 { load ?(
                     <div className={styles.height}>
                         <div className={styles.banner}>

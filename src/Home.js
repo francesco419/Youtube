@@ -14,7 +14,7 @@ function Home() {
   [loading,setLoading]=useState(true),
   [data,setData]=useState(false),
   [intro,setIntro]=useState(session==true || session===null ? true : false);
-  const informtext="현재 페이지는 유튜브를 클로닝한 페이지로서,\n각 페이지는 유튜브와 같이 설정을 하였으나 영상은 작동하지 않습니다.";
+  const informtext="현재 페이지는 유튜브를 클로닝한 페이지로서,\n각 페이지는 유튜브와 같이 설정을 하였으나 영상은 작동하지 않습니다.\nYoutube API 사용에 제한이 있으므로 API사용량이 초과되면 영상이 표시되지 않을 수 있습니다.";
 
   const count = "50";
     const getState=async()=>{
@@ -35,7 +35,6 @@ function Home() {
 
   const getData=(data)=>{
     setData(data);
-    console.log(data)
   }
 
 useEffect(()=>{
