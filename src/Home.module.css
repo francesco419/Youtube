@@ -1,6 +1,7 @@
 .page{
     background-color: #181818;
     white-space: pre-line;
+    position: relative;
 }
 
 .intro{
