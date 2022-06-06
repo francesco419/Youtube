@@ -17,7 +17,7 @@ function Home() {
   [intro,setIntro]=useState(session==true || session===null ? true : false);
   const informtext="현재 페이지는 유튜브를 클로닝한 페이지로서,\n각 페이지는 유튜브와 같이 설정을 하였으나 영상은 작동하지 않습니다.\nYoutube API 사용에 제한이 있으므로 API사용량이 초과되면 영상이 표시되지 않을 수 있습니다.";
 
-  const INFOTEXT='현재 페이지에서 보여지는 영상들은 실제 Youtube와 다르게, 체널의 아이콘이나 영상의 길이가 표시되지 않는데, 이는 페이지에 사용한 API호출에서 따로 아이콘 혹은 영상길이에 대한 정보를 제공하지 않았고 각각의 데이터를 불러오기에는 API 일일 한도 소모량이 크므로 불가피하게 표시 하지 못하였습니다.';
+  const INFOTEXT='● 현재 페이지에서 보여지는 영상들은 실제 Youtube와 다르게, 체널의 아이콘이나 영상의 길이가 표시되지 않는데, 이는 페이지에 사용한 API호출에서 따로 아이콘 혹은 영상길이에 대한 정보를 제공하지 않았고 각각의 데이터를 불러오기에는 API 일일 한도 소모량이 크므로 불가피하게 표시 하지 못하였습니다.';
 
   const count = "50";
     const getState=async()=>{

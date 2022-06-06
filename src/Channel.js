@@ -104,7 +104,7 @@ function Channel(){
             <Menu
             getData={getData}
             />
-            <div className={styles.box} style={data ? {margin:'60px 0 0 72px'} : {margin:'60px 0 0 248px'}}>
+            <div className={styles.box} style={data ? {margin:'60px 0 0 72px'} : {margin:'60px 0 0 230px'}}>
                 { load ?(
                     <div className={styles.height}>
                         <div className={styles.banner}>

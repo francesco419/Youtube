@@ -1,6 +1,6 @@
 .playlist{
     position: relative;
-    width: 1284px;
+    max-width: 1284px;
     height:300px;
     border-top: 1px solid #272727;
 }

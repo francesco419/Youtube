@@ -5,6 +5,7 @@ import Header from "./Header";
 import Moment from 'react-moment';
 import 'moment/locale/ko';
 import Loading from "./Loading";
+import Info from './Info';
 import axios from "axios";
 
 const API_KEY=process.env.REACT_APP_YOUTUBE_API_KEY;
@@ -17,6 +18,8 @@ function ShowVideo(){
     [relatevideo,setRelateVideo]=useState([]),
     [videoinfo,setVideo]= useState([]),
     [loading,setLoading]= useState(true);
+
+    const INFOTEXT = "● 제한된 API사용 한도로 인해 동영상 재생은 불가하도록 설정했습니다.\n● 댓글에 대한 답글을 불러오기위해서는 각 댓글에 대해 각각 API호출을 해야하기에 API사용을 고려해 표시하지 않았습니다.\n";
 
     const getVideoAPI=async()=>{
         let data;
@@ -264,6 +267,7 @@ function ShowVideo(){
                     }
                 </div>
             </div>)}
+            <Info text={INFOTEXT}/>
         </div>
     )
 }
