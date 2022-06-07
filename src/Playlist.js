@@ -15,6 +15,7 @@ function Playlist({id,title}){
     const [move,setMove] = useState(0);
     const ref = useRef();
 
+    
     const axi = async()=>{
         const tfile = await axios.get(`https://www.googleapis.com/youtube/v3/playlistItems?playlistId=${id}&part=snippet&maxResults=12&key=${API_KEY}`);
         if(tfile.data.items.length>2){
@@ -36,6 +37,10 @@ function Playlist({id,title}){
             </div>
         )
     }
+
+    useEffect(()=>{
+
+    },[])
     
     useEffect(()=>{
         axi();
