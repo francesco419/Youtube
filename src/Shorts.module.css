@@ -9,6 +9,7 @@
     display: flex;
     justify-content: center;
     height: 90vh;
+    padding:15px 0;
 }
 
 .shortvideo{
@@ -22,6 +23,7 @@
     width: 655px;
     height: 100%;
     background-color: #000000;
+    border-radius: 15px;
 }
 
 .video img{
@@ -64,8 +66,38 @@
 }
 
 .menu{
+    display: flex;
+    flex-direction: column;
     width: 75px;
     height: 100%;
     margin-left: 10px;
-    background-color: blueviolet;
+    color:#7e7e7e;
+    justify-content: flex-end;
+    align-items: center;
+    fill:#7e7e7e;
+}
+
+.good{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}
+
+.like{
+    display: none;
+    position: absolute;
+    background-color: #181818;
+}
+
+.good:hover .like{
+    display: block;
+}
+
+.bad{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
 }
