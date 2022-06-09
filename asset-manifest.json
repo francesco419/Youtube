@@ -1,11 +1,13 @@
 {
   "files": {
-    "main.css": "/Youtube/static/css/main.b067e800.css",
-    "main.js": "/Youtube/static/js/main.b18e406c.js",
+    "main.css": "/Youtube/static/css/main.47e5b6f3.css",
+    "main.js": "/Youtube/static/js/main.a85bcf40.js",
+    "static/media/info.png": "/Youtube/static/media/info.8d2c2e2cd81460bf9d5f.png",
     "static/media/YouTube-White-Full-Color-Logo.wine.svg": "/Youtube/static/media/YouTube-White-Full-Color-Logo.wine.aa59ad1d39d85d569cf0fae35a7ec39c.svg",
     "static/media/YouTube-Logo.wine.svg": "/Youtube/static/media/YouTube-Logo.wine.fe035137dbd3c56c1e16cf6e9de08760.svg",
     "static/media/setting.svg": "/Youtube/static/media/setting.ccbef73aa6c9694bb860624e636fbdac.svg",
     "static/media/originals.svg": "/Youtube/static/media/originals.8c4f47cdc2281b9d2a4733a17067db4a.svg",
+    "static/media/good.svg": "/Youtube/static/media/good.425557059207a0453400a3679e48fca2.svg",
     "static/media/livestream.svg": "/Youtube/static/media/livestream.b4027fcd696a22abfdf8e8bf928d0f88.svg",
     "static/media/customers.svg": "/Youtube/static/media/customers.1a9f3fad270a2067f376472ebf2a7db8.svg",
     "index.html": "/Youtube/index.html",
@@ -32,11 +34,11 @@
     "static/media/myvideo.svg": "/Youtube/static/media/myvideo.1c18a62eee8741c6fe95256f9cb24936.svg",
     "static/media/home.svg": "/Youtube/static/media/home.cd5864178b716e84d81662f648e0d98e.svg",
     "static/media/arrow.svg": "/Youtube/static/media/arrow.2ef2205727032143d4241530dac09c5e.svg",
-    "main.b067e800.css.map": "/Youtube/static/css/main.b067e800.css.map",
-    "main.b18e406c.js.map": "/Youtube/static/js/main.b18e406c.js.map"
+    "main.47e5b6f3.css.map": "/Youtube/static/css/main.47e5b6f3.css.map",
+    "main.a85bcf40.js.map": "/Youtube/static/js/main.a85bcf40.js.map"
   },
   "entrypoints": [
-    "static/css/main.b067e800.css",
-    "static/js/main.b18e406c.js"
+    "static/css/main.47e5b6f3.css",
+    "static/js/main.a85bcf40.js"
   ]
 }
