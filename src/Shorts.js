@@ -23,7 +23,6 @@ function Shorts(){
 
     useEffect(()=>{
         getVideos();
-        console.log(videos)
     },[])
 
     function ShortVideos({thumbnails,title,channelTitle}){
@@ -66,12 +65,13 @@ function Shorts(){
             <Menu/>
             <div className={styles.box}>
                 {loading ? <Loading/> :
-                <div>
+                <div className={styles.container}>
                     {videos.items.map((item)=>(
                         <ShortVideos
                     thumbnails={item.snippet.thumbnails.high.url}
                     title={item.snippet.title}
                     channelTitle={item.snippet.channelTitle}
+                    key={item.id.videoId}
                     />
                     ))}
                 </div>
