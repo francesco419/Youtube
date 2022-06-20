@@ -7,6 +7,7 @@ import ChannelVideos from "./ChannelVideos";
 import ChannelPlaylist from "./ChannelPlaylist";
 import { ReactComponent as SingoQ } from './img/singo.svg';
 import Loading from "./Loading";
+import Info from './Info';
 
 const API_KEY=process.env.REACT_APP_YOUTUBE_API_KEY;
 
@@ -16,6 +17,8 @@ function Channel(){
     const [channelinfo, setChannelInfo]=useState([]);
     const [load, setLoad]=useState(false),
     [data,setData]=useState(false);
+
+    const INFOTEXT = "● 일부 동영상은 데이터상에 존재하지만 공개한 영상이 아니기에 썸네일 및 영상의 제목이 다르게 나타날 수 있습니다.";
 
     const getItem=async()=>{
         const jfile = await(await fetch(`https://www.googleapis.com/youtube/v3/channels?id=${ID.id}&part=snippet,brandingSettings,statistics&key=${API_KEY}`)).json();
@@ -142,6 +145,7 @@ function Channel(){
                     <Loading sec={1500}/>
                 ) }
             </div>
+            <Info text={INFOTEXT}/>
         </div>
     )
 }
