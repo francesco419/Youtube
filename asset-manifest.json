@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/Youtube/static/css/main.47e5b6f3.css",
-    "main.js": "/Youtube/static/js/main.a85bcf40.js",
+    "main.css": "/Youtube/static/css/main.d7cf658c.css",
+    "main.js": "/Youtube/static/js/main.3ffad8f1.js",
     "static/media/info.png": "/Youtube/static/media/info.8d2c2e2cd81460bf9d5f.png",
     "static/media/YouTube-White-Full-Color-Logo.wine.svg": "/Youtube/static/media/YouTube-White-Full-Color-Logo.wine.aa59ad1d39d85d569cf0fae35a7ec39c.svg",
     "static/media/YouTube-Logo.wine.svg": "/Youtube/static/media/YouTube-Logo.wine.fe035137dbd3c56c1e16cf6e9de08760.svg",
@@ -34,11 +34,11 @@
     "static/media/myvideo.svg": "/Youtube/static/media/myvideo.1c18a62eee8741c6fe95256f9cb24936.svg",
     "static/media/home.svg": "/Youtube/static/media/home.cd5864178b716e84d81662f648e0d98e.svg",
     "static/media/arrow.svg": "/Youtube/static/media/arrow.2ef2205727032143d4241530dac09c5e.svg",
-    "main.47e5b6f3.css.map": "/Youtube/static/css/main.47e5b6f3.css.map",
-    "main.a85bcf40.js.map": "/Youtube/static/js/main.a85bcf40.js.map"
+    "main.d7cf658c.css.map": "/Youtube/static/css/main.d7cf658c.css.map",
+    "main.3ffad8f1.js.map": "/Youtube/static/js/main.3ffad8f1.js.map"
   },
   "entrypoints": [
-    "static/css/main.47e5b6f3.css",
-    "static/js/main.a85bcf40.js"
+    "static/css/main.d7cf658c.css",
+    "static/js/main.3ffad8f1.js"
   ]
 }
